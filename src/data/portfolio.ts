@@ -57,7 +57,7 @@ export const quickInfo = [
   { label: "University", value: "CU Boulder" },
   { label: "GPA", value: "3.67 / 4.0" },
   { label: "Location", value: "Boulder, CO" },
-  { label: "Status", value: "Open to Opportunities" },
+  { label: "Status", value: "Open to Relocate" },
 ];
 
 export const stats = [
