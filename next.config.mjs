@@ -1,8 +1,7 @@
 const repo = 'Portfolio'
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export",
+    output: 'export',
     basePath: `/${repo}`,
     assetPrefix: `/${repo}/`,
     images: {
@@ -10,4 +9,4 @@ const nextConfig = {
     },
 }
 
-module.exports = nextConfig
+export default nextConfig
