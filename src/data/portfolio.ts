@@ -98,7 +98,7 @@ export const experiences: Experience[] = [
       "Spearheaded A/B tests on 100K+ system users, assigning control and treatment groups to quantify feature lift and validate a 50% improvement prior to large-scale deployment",
       
     ],
-    tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data","Outlier Analysis","Cross-Functional Collaboration"],
+    tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data","Outlier Analysis"],
   },
   {
     company: "LG Electronics",
