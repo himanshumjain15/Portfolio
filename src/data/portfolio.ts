@@ -234,7 +234,7 @@ export const projects: Project[] = [
       "The biggest lesson was that exploratory data analysis is not a box to check — it fundamentally shaped our modeling decisions. Discovering the extreme vocabulary divergence between Jigsaw and TweetEval meant that a model trained on one would likely fail on the other without careful domain adaptation.",
     tags: ["NLP", "Text Mining", "Python", "scikit-learn", "Clustering"],
     year: "2026",
-    links: [{ label: "GitHub", url: "https://github.com/himanshumjain15" }],
+    links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/toxicity-mining-nlp" }],
     featured: true,
   },
   {
