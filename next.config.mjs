@@ -1,7 +1,13 @@
+const repo = 'Portfolio'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        optimizeCss: false,
+    output: "export",
+    basePath: `/${repo}`,
+    assetPrefix: `/${repo}/`,
+    images: {
+        unoptimized: true,
     },
-};
-export default nextConfig;
+}
+
+module.exports = nextConfig
