@@ -14,7 +14,7 @@ export const personalInfo = {
   openToRelocate: true,
   github: "https://github.com/himanshumjain15",
   linkedin: "https://www.linkedin.com/in/himanshu-jain-559335222",
-  resumeFile: "/Himanshu_Jain_Resume.pdf",
+  resumeFile: "/Portfolio/Himanshu_Jain_Resume.pdf",
   university: "University of Colorado Boulder",
   degree: "MS",
   program: "Data Science",
