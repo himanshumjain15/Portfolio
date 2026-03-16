@@ -96,6 +96,7 @@ export const experiences: Experience[] = [
       "Transformed 10M+ healthcare records into actionable insights using SQL, enabling stakeholders to track adoption trends and optimize rollout of the Tele-Manas application",
       "Designed and deployed Power BI dashboards for 10+ regional teams to track performance KPIs, reducing strategic decision cycles by 25%",
       "Spearheaded A/B tests on 100K+ system users, assigning control and treatment groups to quantify feature lift and validate a 50% improvement prior to large-scale deployment",
+      
     ],
     tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data"],
   },
