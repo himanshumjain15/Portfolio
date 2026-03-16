@@ -188,7 +188,7 @@ export const research: Research[] = [
       "Won Best Paper Award at the conference, recognizing innovation in deep learning optimization",
     ],
     tags: ["Deep Learning", "CNN", "TensorFlow", "Medical Imaging", "Optimization"],
-    links: [{ label: "Paper", url: "#" }],
+    links: [{ label: "Paper", url: "https://link.springer.com/chapter/10.1007/978-981-96-3352-4_46" }],
     award: "Best Paper Award",
   },
 ];
