@@ -5,7 +5,7 @@
 export const personalInfo = {
   name: "Himanshu Jain",
   firstName: "Himanshu",
-  tagline: "Turning messy data into clear decisions.",
+  tagline: "Turning messy data into actionable insights.",
   description:
     "MS Data Science at CU Boulder. Building insights from millions of records at Ernst & Young and LG Electronics. Award-winning researcher in deep learning for medical imaging.",
   email: "himanshumjain15@gmail.com",
