@@ -99,7 +99,7 @@ export const experiences: Experience[] = [
       "Cleaned and standardized 10M+ records using SQL, performing outlier analysis via statistical thresholds and data validation checks, improving analysis accuracy by 40 % ",
       "Orchestrated user-centric feature rollouts cross-functionally with medical professionals, engineers, and government officials, leading to a 30 % increase in adoption across the national health platform"
     ],
-    tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data","Outlier Analysis","Cross-Functional Collaboration"],
+    tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data", "Outlier Analysis", "Cross-Functional Collaboration"],
   },
   {
     company: "LG Electronics",
@@ -236,9 +236,42 @@ export const projects: Project[] = [
       "The biggest lesson was that exploratory data analysis is not a box to check — it fundamentally shaped our modeling decisions. Discovering the extreme vocabulary divergence between Jigsaw and TweetEval meant that a model trained on one would likely fail on the other without careful domain adaptation.",
     tags: ["NLP", "Text Mining", "Python", "scikit-learn", "Clustering"],
     year: "2026",
-    links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/toxicity-mining-nlp" }],
+    links: [
+      { label: "GitHub", url: "https://github.com/himanshumjain15/toxicity-mining-nlp" },
+      { label: "Website", url: "https://glenpaulson.github.io/toxicity-mining-website/#/data-exploration" },
+    ],
     featured: true,
   },
+  {
+    id: "lm-assisted-automated-eda-pipeline",
+    title: "LM-Assisted Automated EDA Pipeline",
+    subtitle:
+      "An end-to-end Python workflow that ingests any CSV, computes robust statistics, and generates verified LLM-driven dataset insights.",
+    description:
+      "Built an automated EDA pipeline using Python, Pandas, and Seaborn with Gemini API integration and a fact-verification layer to ensure narrative outputs use only computed values.",
+    problem:
+      "Exploratory data analysis is often manual, repetitive, and difficult to scale across datasets. Analysts spend significant time producing baseline statistics, checking data quality, creating visualizations, and writing summaries, which slows iteration and increases reporting inconsistency.",
+    approach:
+      "Developed a reusable Python pipeline that accepts arbitrary CSV inputs, computes descriptive statistics, performs outlier detection with the IQR method, and auto-generates 5+ visualizations using Seaborn. Added Gemini API integration behind a verification layer that passes only computed statistical outputs to the model, constraining generated narratives to factual dataset values.",
+    results: [
+      "Automated end-to-end EDA from raw CSV ingestion to structured Markdown reporting",
+      "Generated descriptive statistics, IQR-based outlier checks, and 5+ visualizations per run",
+      "Produced 5-10 dataset-specific narrative insights for each dataset execution",
+      "Maintained zero hallucinated numeric values by verifying all LLM inputs against computed statistics",
+    ],
+    lessons:
+      "The key takeaway was that LLM quality in analytics depends heavily on context control, not just prompting. By restricting model input to verified computed metrics, the pipeline retained narrative flexibility while preserving statistical correctness and trustworthiness.",
+    tags: ["Python", "Gemini API", "Pandas", "Seaborn", "EDA", "Automation"],
+    year: "2026",
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/himanshumjain15/DM-Assignment-02-Automated-Dataset-Insight-Generator-LLM-Assisted-EDA-",
+      },
+    ],
+    featured: false,
+  },
+
   {
     id: "wine-quality",
     title: "Statistical Analysis of Wine Quality",
