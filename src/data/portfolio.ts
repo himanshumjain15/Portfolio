@@ -37,10 +37,10 @@ export const sections: SectionConfig[] = [
   { id: "hero", label: "Home", accent: "#5B6CF5", cssVar: "--accent-hero" },
   { id: "about", label: "About", accent: "#0EA5E9", cssVar: "--accent-about" },
   { id: "experience", label: "Experience", accent: "#10B981", cssVar: "--accent-experience" },
-  { id: "leadership", label: "Leadership", accent: "#D97706", cssVar: "--accent-leadership" },
   { id: "projects", label: "Projects", accent: "#F97316", cssVar: "--accent-projects" },
   { id: "research", label: "Research", accent: "#7C3AED", cssVar: "--accent-research" },
   { id: "skills", label: "Skills", accent: "#E11D78", cssVar: "--accent-skills" },
+  { id: "leadership", label: "Leadership", accent: "#D97706", cssVar: "--accent-leadership" },
   { id: "contact", label: "Contact", accent: "#0891B2", cssVar: "--accent-contact" },
 ];
 

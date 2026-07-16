@@ -8,7 +8,7 @@ import {
 import { useTheme } from "next-themes";
 import { personalInfo, sections } from "@/data/portfolio";
 
-const sectionIcons = [Home, User, Briefcase, Trophy, FolderOpen, FlaskConical, Wrench, Send];
+const sectionIcons = [Home, User, Briefcase, FolderOpen, FlaskConical, Wrench, Trophy, Send];
 
 // macOS dock magnification: Gaussian-like falloff
 function getMagnification(distance: number, maxDist: number, maxScale: number) {

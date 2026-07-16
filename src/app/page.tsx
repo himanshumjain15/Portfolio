@@ -25,10 +25,10 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <ExperienceSection />
-          <LeadershipSection />
           <ProjectsSection />
           <ResearchSection />
           <SkillsSection />
+          <LeadershipSection />
           <ContactSection />
 
           {/* Footer */}
