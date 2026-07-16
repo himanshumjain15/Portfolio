@@ -83,6 +83,22 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    company: "Summer Atlantic Capital",
+    role: "Data Science Intern",
+    location: "Newark, Delaware",
+    dates: "Jun 2026 — Aug 2026",
+    metrics: [
+      { value: "100%", label: "Classification Accuracy" },
+      { value: "5", label: "Risk Event Types" },
+      { value: "9", label: "Field Annotation Schema" },
+    ],
+    bullets: [
+      "Engineered the NLP backbone of an AI investment risk agent (spaCy NER, FinBERT, SentenceTransformer) that automatically converts raw regulatory, sanctions, and geopolitical documents into structured risk signals, achieving 100% event classification accuracy across 5 risk event types and enabling analysts to replace manual document review with model-generated alerts",
+      "Designed a retraining pipeline for a production AI agent with a 9-field annotation schema and automated validation framework, ensuring human-reviewed labels feed cleanly into NLP model updates, directly improving the reliability of risk scores and confidence outputs consumed by portfolio managers on the SAC Nexus platform",
+    ],
+    tags: ["spaCy", "FinBERT", "SentenceTransformers", "NLP", "Python", "Risk Modeling"],
+  },
+  {
     company: "Ernst & Young (EY)",
     role: "Data Science Intern",
     location: "Bengaluru, India",
