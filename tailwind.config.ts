@@ -21,6 +21,7 @@ const config: Config = {
         "accent-hero": "var(--accent-hero)",
         "accent-about": "var(--accent-about)",
         "accent-experience": "var(--accent-experience)",
+        "accent-leadership": "var(--accent-leadership)",
         "accent-research": "var(--accent-research)",
         "accent-projects": "var(--accent-projects)",
         "accent-skills": "var(--accent-skills)",

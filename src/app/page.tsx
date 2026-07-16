@@ -4,6 +4,7 @@ import { MeshAurora } from "@/components/MeshAurora";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
+import { LeadershipSection } from "@/components/LeadershipSection";
 import { ResearchSection } from "@/components/ResearchSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { SkillsSection } from "@/components/SkillsSection";
@@ -24,6 +25,7 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <ExperienceSection />
+          <LeadershipSection />
           <ProjectsSection />
           <ResearchSection />
           <SkillsSection />

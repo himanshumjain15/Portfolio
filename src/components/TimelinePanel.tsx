@@ -3,12 +3,12 @@
 import { useEffect, useLayoutEffect, useState, useCallback, useRef } from "react";
 import {
   Github, Linkedin, Mail, Sun, Moon,
-  Home, User, Briefcase, FolderOpen, FlaskConical, Wrench, Send,
+  Home, User, Briefcase, Trophy, FolderOpen, FlaskConical, Wrench, Send,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { personalInfo, sections } from "@/data/portfolio";
 
-const sectionIcons = [Home, User, Briefcase, FolderOpen, FlaskConical, Wrench, Send];
+const sectionIcons = [Home, User, Briefcase, Trophy, FolderOpen, FlaskConical, Wrench, Send];
 
 // macOS dock magnification: Gaussian-like falloff
 function getMagnification(distance: number, maxDist: number, maxScale: number) {

@@ -37,6 +37,7 @@ export const sections: SectionConfig[] = [
   { id: "hero", label: "Home", accent: "#5B6CF5", cssVar: "--accent-hero" },
   { id: "about", label: "About", accent: "#0EA5E9", cssVar: "--accent-about" },
   { id: "experience", label: "Experience", accent: "#10B981", cssVar: "--accent-experience" },
+  { id: "leadership", label: "Leadership", accent: "#D97706", cssVar: "--accent-leadership" },
   { id: "projects", label: "Projects", accent: "#F97316", cssVar: "--accent-projects" },
   { id: "research", label: "Research", accent: "#7C3AED", cssVar: "--accent-research" },
   { id: "skills", label: "Skills", accent: "#E11D78", cssVar: "--accent-skills" },
@@ -149,6 +150,34 @@ export const experiences: Experience[] = [
       "Published research at the 5th International Conference on Data Analytics (London, 2024), winning Best Paper Award for the proposed automated lung cancer screening framework",
     ],
     tags: ["PyTorch", "CNN", "Deep Learning", "Medical Imaging", "Sine Cosine Algorithm"],
+  },
+];
+
+// ═══════════════════════════════════════════════════════
+// LEADERSHIP
+// ═══════════════════════════════════════════════════════
+
+export interface Leadership {
+  organization: string;
+  role: string;
+  dates: string;
+  metrics?: { value: string; label: string }[];
+  bullets: string[];
+}
+
+export const leadership: Leadership[] = [
+  {
+    organization: "REVELS 2024",
+    role: "All-India Intercollegiate Cultural Festival",
+    dates: "Jun 2023 — Aug 2024",
+    metrics: [
+      { value: "20", label: "Team Members Led" },
+      { value: "5K+", label: "Attendees Served" },
+      { value: "10+", label: "Committees Coordinated" },
+    ],
+    bullets: [
+      "Led a 20-member hospitality team serving 5,000+ attendees; coordinated with 10+ student committees and external partners to manage accommodation, catering, and event logistics",
+    ],
   },
 ];
 
