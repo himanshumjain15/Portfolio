@@ -127,6 +127,17 @@ export function ProjectsSection() {
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
+
+                  {project.image && (
+                    <div className="rounded-lg overflow-hidden mb-4 border border-border-subtle">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[12px] font-mono text-text-tertiary">
                       {project.year}

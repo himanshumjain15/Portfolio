@@ -292,6 +292,86 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "intellitalent",
+    title: "IntelliTalent - Resume to Job Matching",
+    subtitle:
+      "End-to-end resume-to-job matching platform using PyMuPDF parsing, GPT-4o-mini skill extraction over a FAISS-backed RAG pipeline, and hybrid 60% cosine / 40% skill-overlap scoring on live listings.",
+    description:
+      "An NLP-driven platform that matches resumes to live job listings. Resumes are parsed with PyMuPDF, skills extracted using GPT-4o-mini via a FAISS-backed RAG pipeline, and jobs ranked with a hybrid score of 60% cosine similarity and 40% skill overlap over listings scraped from Apify. Latency is optimized with regex taxonomy matching (50ms vs. 5+ seconds per-job LLM calls) and batched OpenAI embeddings with vectorized NumPy cosine similarity. Deployed across AWS EC2 and GCP Cloud Run with O*NET role clustering and MongoDB text search.",
+    problem:
+      "Job seekers waste time manually scanning listings that turn out to be irrelevant. Keyword-based search produces both false negatives and noise, and gives no clarity on how well a resume actually qualifies for a role.",
+    approach:
+      "Parse the PDF resume with PyMuPDF, extract structured skills with GPT-4o-mini over a FAISS-backed RAG index, scrape live listings from LinkedIn and Indeed via Apify, embed everything with OpenAI's text-embedding-3-small, and rank with a hybrid score of 60% semantic similarity plus 40% skill overlap — returning ranked matches with skill-gap analysis.",
+    results: [
+      "FAISS-backed RAG for GPT-4o-mini skill extraction",
+      "Hybrid job ranking: 60% semantic similarity + 40% skill overlap",
+      "Regex taxonomy matching replaces per-job LLM calls (~50ms vs. 5+ sec per job)",
+      "Batch OpenAI embeddings with vectorized cosine similarity",
+      "O*NET role clustering with GPT-generated role suggestions",
+      "MongoDB TTL indexes auto-expire scraped listings after 7 days",
+    ],
+    lessons:
+      "Per-job LLM calls made ranking too slow, so regex taxonomy matching replaced them, cutting skill matching to ~50ms per job. FAISS-injected RAG context kept token overhead down by supplying only the relevant taxonomy slice per resume, and MongoDB TTL indexes solved staleness by auto-expiring listings after 7 days.",
+    tags: ["Python", "GPT-4o-mini", "FAISS", "PyMuPDF", "MongoDB", "AWS EC2", "GCP Cloud Run"],
+    year: "2026",
+    links: [
+      { label: "GitHub", url: "https://github.com/himanshumjain15/intelli-talent-alignment" },
+      { label: "Live Demo", url: "https://intelli-talent.ddns.net/landing.html" },
+    ],
+    featured: false,
+    image: "/Portfolio/images/intellitalent-cover.png",
+    category: "AI / ML",
+    caseStudy: {
+      overview:
+        "An NLP-driven platform that matches resumes to live job listings. Resumes are parsed with PyMuPDF, skills extracted using GPT-4o-mini via a FAISS-backed RAG pipeline, and jobs ranked with a hybrid score of 60% cosine similarity and 40% skill overlap over listings scraped from Apify. Latency is optimized with regex taxonomy matching (50ms vs. 5+ seconds per-job LLM calls) and batched OpenAI embeddings with vectorized NumPy cosine similarity. Deployed across AWS EC2 and GCP Cloud Run with O*NET role clustering and MongoDB text search.",
+      problemStatement:
+        "Job seekers waste time manually scanning listings that turn out to be irrelevant. Keyword-based search produces both false negatives and noise, and gives no clarity on how well a resume actually qualifies for a role.",
+      approachSummary:
+        "Parse the PDF resume with PyMuPDF, extract structured skills with GPT-4o-mini over a FAISS-backed RAG index, scrape live listings from LinkedIn and Indeed via Apify, embed everything with OpenAI's text-embedding-3-small, and rank with a hybrid score of 60% semantic similarity plus 40% skill overlap — returning ranked matches with skill-gap analysis.",
+      systemArchitecture:
+        "A multi-stage pipeline moves a resume from upload to ranked matches: PDF upload → PyMuPDF extraction → GPT-4o-mini skill extraction via FAISS RAG → Apify job scraping → batch embeddings → vectorized cosine similarity → hybrid scoring → MongoDB storage → a web dashboard of ranked matches.",
+      keyFeatures: [
+        "FAISS-backed RAG for GPT-4o-mini skill extraction",
+        "Hybrid job ranking: 60% semantic similarity + 40% skill overlap",
+        "Regex taxonomy matching replaces per-job LLM calls (~50ms vs. 5+ sec per job)",
+        "Batch OpenAI embeddings with vectorized cosine similarity",
+        "O*NET role clustering with GPT-generated role suggestions",
+        "Bcrypt auth with OTP verification and brute-force protection",
+        "MongoDB TTL indexes auto-expire scraped listings after 7 days",
+      ],
+      techStack: [
+        { category: "LLM & Embeddings", items: ["GPT-4o-mini", "text-embedding-3-small", "Llama 3.3 70B (Groq)"] },
+        { category: "Core", items: ["LangChain", "FAISS", "PyMuPDF", "MongoDB 7.0"] },
+        { category: "Data", items: ["Apify Actors", "O*NET", "OpenAI embeddings"] },
+        { category: "Deployment", items: ["Docker", "AWS EC2", "GCP Cloud Run"] },
+        { category: "Security", items: ["AWS SSM Parameter Store", "GCP Secret Manager", "Bcrypt"] },
+      ],
+      deployment:
+        "Containerized with Docker and deployed through AWS (deploy_aws.sh) and GCP Cloud Run (deploy_gcp.sh) scripts, with secrets managed via AWS SSM Parameter Store and GCP Secret Manager.",
+      challenges: [
+        {
+          challenge: "Per-job LLM calls made ranking too slow — 5+ seconds per listing.",
+          solution: "Regex taxonomy matching replaced per-job LLM calls, cutting skill matching to ~50ms per job.",
+        },
+        {
+          challenge: "Feeding the full skill taxonomy to the model added heavy token overhead.",
+          solution: "FAISS-injected RAG context supplies only the relevant taxonomy slice per resume.",
+        },
+        {
+          challenge: "Scraped job listings went stale and bloated storage over time.",
+          solution: "MongoDB TTL indexes automatically expire listings after 7 days.",
+        },
+      ],
+      improvements: [
+        "Application tracker to manage jobs a user has applied to",
+        "Resume quality scoring with actionable feedback",
+        "Cross-user alerts when strong new matches appear",
+        "A personal analytics dashboard for search activity",
+      ],
+      footerTags: ["NLP", "RAG", "LLM", "Job Matching"],
+    },
+  },
+  {
     id: "hate-speech-mining",
     title: "Toxicity Mining",
     subtitle:
@@ -317,7 +397,7 @@ export const projects: Project[] = [
       { label: "GitHub", url: "https://github.com/himanshumjain15/toxicity-mining-nlp" },
       { label: "Live Demo", url: "https://glenpaulson.github.io/toxicity-mining-website/#/data-exploration" },
     ],
-    featured: true,
+    featured: false,
     image: "/Portfolio/images/hate-speech-mining-cover.png",
     category: "AI / ML",
     caseStudy: {
