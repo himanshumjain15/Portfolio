@@ -517,6 +517,40 @@ export const projects: Project[] = [
     featured: false,
     image: "/Portfolio/images/lm-assisted-eda-cover.svg",
   },
+  {
+    id: "titanic-logistic-regression",
+    title: "Titanic Survival Prediction — Logistic Regression",
+    subtitle:
+      "A complete ML pipeline predicting Titanic passenger survival with Logistic Regression, GridSearchCV tuning, and extensive EDA.",
+    description:
+      "Predicts Titanic passenger survival using a full sklearn Pipeline (Logistic Regression + GridSearchCV), with extensive EDA uncovering the key drivers of survival.",
+    problem:
+      "Predicting which Titanic passengers survived requires more than a single strong feature — it means untangling how gender, class, age, and family size interact, and building a leakage-free pipeline that generalizes beyond the training data.",
+    approach:
+      "Built an end-to-end sklearn Pipeline with separate preprocessing sub-pipelines: median imputation + StandardScaler for numeric features (age, fare, sibsp, parch), mode imputation + OneHotEncoder for nominal categoricals (sex, embarked), and OrdinalEncoder for class. Tuned Logistic Regression's regularization strength C over {0.01, 0.1, 1, 10, 100} with 5-fold stratified GridSearchCV optimizing ROC-AUC.",
+    results: [
+      "Achieved ~81% test accuracy and ~0.87 test ROC-AUC (~0.86 in 5-fold CV)",
+      "Found gender was the strongest predictor: females survived at ~74% vs. ~19% for males",
+      "Found class mattered significantly: 1st class survived at 63% vs. 24% for 3rd class, despite 3rd class being 55% of passengers",
+      "Identified a strong interaction effect: 1st-class females had a 96% survival rate vs. 13% for 3rd-class males",
+    ],
+    lessons:
+      "The biggest takeaway was that survival wasn't driven by any single feature in isolation — gender and class interacted strongly, with a 1st-class female's odds (96%) nearly the inverse of a 3rd-class male's (13%). This reinforced the value of visualizing interaction effects during EDA before modeling, not just univariate relationships.",
+    tags: ["Python", "scikit-learn", "Logistic Regression", "GridSearchCV", "EDA"],
+    year: "2026",
+    links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/Titanic-Logistic-Regression-Analysis" }],
+    featured: false,
+    image: "/Portfolio/images/titanic-cover.svg",
+    workflow: [
+      "Imports & Data Loading",
+      "Dataset Overview",
+      "Exploratory Data Analysis",
+      "Feature Engineering & Preprocessing",
+      "Model Building",
+      "Model Evaluation",
+      "Conclusion",
+    ],
+  },
 
   {
     id: "wine-quality",

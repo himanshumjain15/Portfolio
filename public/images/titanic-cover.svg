@@ -1,0 +1,135 @@
+<svg viewBox="0 0 1600 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B1526"/>
+      <stop offset="60%" stop-color="#0C1220"/>
+      <stop offset="100%" stop-color="#081018"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="80%" cy="18%" r="30%">
+      <stop offset="0%" stop-color="#7BD8FF" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#7BD8FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="warmGlow" cx="22%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hull" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A2F52"/>
+      <stop offset="100%" stop-color="#171A30"/>
+    </linearGradient>
+    <linearGradient id="deck1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#FDBA74"/>
+    </linearGradient>
+    <linearGradient id="deck3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#5D8CBF"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0E2438"/>
+      <stop offset="100%" stop-color="#081018"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="800" fill="url(#bg)"/>
+  <rect width="1600" height="800" fill="url(#moonGlow)"/>
+  <rect width="1600" height="800" fill="url(#warmGlow)"/>
+
+  <!-- moon -->
+  <circle cx="1290" cy="140" r="46" fill="#EAF4FF" opacity="0.9"/>
+  <circle cx="1305" cy="128" r="46" fill="#0B1526" opacity="0.5"/>
+
+  <!-- stars -->
+  <g fill="#FFFFFF" opacity="0.5">
+    <circle cx="120" cy="90" r="2"/>
+    <circle cx="220" cy="150" r="1.5"/>
+    <circle cx="980" cy="70" r="2"/>
+    <circle cx="1080" cy="130" r="1.5"/>
+    <circle cx="1450" cy="260" r="2"/>
+    <circle cx="60" cy="240" r="1.5"/>
+    <circle cx="700" cy="60" r="1.5"/>
+  </g>
+
+  <!-- ship hull cross-section -->
+  <g>
+    <rect x="180" y="230" width="620" height="330" rx="18" fill="url(#hull)" stroke="#3A3F66" stroke-width="1.5"/>
+    <!-- funnel -->
+    <rect x="420" y="150" width="46" height="90" rx="6" fill="#20233F" stroke="#3A3F66"/>
+    <rect x="420" y="150" width="46" height="14" fill="#F97316" fill-opacity="0.6"/>
+
+    <!-- 1st class deck band -->
+    <rect x="196" y="252" width="588" height="120" rx="10" fill="#20233F" stroke="#3A3F66"/>
+    <rect x="216" y="272" width="200" height="30" rx="15" fill="#20233F" stroke="#F97316" stroke-opacity="0.5"/>
+    <text x="316" y="292" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14" fill="#FDBA74" font-weight="700">1st Class Deck</text>
+    <rect x="216" y="316" width="540" height="18" rx="9" fill="#14162A"/>
+    <rect x="216" y="316" width="340" height="18" rx="9" fill="url(#deck1)"/>
+    <text x="770" y="330" text-anchor="end" font-family="ui-monospace, monospace" font-size="14" fill="#FDBA74" font-weight="700">63%</text>
+
+    <!-- 3rd class deck band -->
+    <rect x="196" y="392" width="588" height="120" rx="10" fill="#161A30" stroke="#2A2F52"/>
+    <rect x="216" y="412" width="200" height="30" rx="15" fill="#161A30" stroke="#5D8CBF" stroke-opacity="0.5"/>
+    <text x="316" y="432" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14" fill="#7BAEDD" font-weight="700">3rd Class Deck</text>
+    <rect x="216" y="456" width="540" height="18" rx="9" fill="#0E1220"/>
+    <rect x="216" y="456" width="130" height="18" rx="9" fill="url(#deck3)"/>
+    <text x="770" y="470" text-anchor="end" font-family="ui-monospace, monospace" font-size="14" fill="#7BAEDD" font-weight="700">24%</text>
+  </g>
+
+  <!-- gender comparison -->
+  <g font-family="ui-monospace, monospace" font-size="13" fill="#8893B8">
+    <text x="860" y="256">Survival by Gender</text>
+
+    <circle cx="878" cy="292" r="9" fill="none" stroke="#FDBA74" stroke-width="2.5"/>
+    <line x1="878" y1="301" x2="878" y2="316" stroke="#FDBA74" stroke-width="2.5"/>
+    <line x1="870" y1="310" x2="886" y2="310" stroke="#FDBA74" stroke-width="2.5"/>
+    <rect x="900" y="284" width="260" height="18" rx="9" fill="#14162A"/>
+    <rect x="900" y="284" width="192" height="18" rx="9" fill="url(#deck1)"/>
+    <text x="1170" y="298" fill="#FDBA74" font-weight="700">74%</text>
+
+    <circle cx="878" cy="342" r="9" fill="none" stroke="#7BAEDD" stroke-width="2.5"/>
+    <line x1="878" y1="351" x2="878" y2="368" stroke="#7BAEDD" stroke-width="2.5"/>
+    <line x1="866" y1="360" x2="890" y2="360" stroke="#7BAEDD" stroke-width="2.5"/>
+    <rect x="900" y="334" width="260" height="18" rx="9" fill="#14162A"/>
+    <rect x="900" y="334" width="66" height="18" rx="9" fill="url(#deck3)"/>
+    <text x="1000" y="348" fill="#7BAEDD" font-weight="700">19%</text>
+  </g>
+
+  <!-- interaction life rings -->
+  <g>
+    <text x="860" y="410" font-family="ui-monospace, monospace" font-size="13" fill="#8893B8">Interaction Effect</text>
+
+    <circle cx="920" cy="470" r="42" fill="none" stroke="url(#deck1)" stroke-width="10"/>
+    <circle cx="920" cy="470" r="42" fill="#14162A" fill-opacity="0.4"/>
+    <text x="920" y="465" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#FDBA74">96%</text>
+    <text x="920" y="481" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#E8ECFF">1st · Female</text>
+
+    <circle cx="1030" cy="490" r="26" fill="none" stroke="url(#deck3)" stroke-width="7"/>
+    <circle cx="1030" cy="490" r="26" fill="#0E1220" fill-opacity="0.4"/>
+    <text x="1030" y="486" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#7BAEDD">13%</text>
+    <text x="1030" y="500" text-anchor="middle" font-family="ui-monospace, monospace" font-size="7" fill="#B9CDE5">3rd · Male</text>
+  </g>
+
+  <!-- ROC / accuracy badge -->
+  <g>
+    <rect x="1120" y="252" width="290" height="260" rx="14" fill="#161A30" stroke="#3A3F66"/>
+    <text x="1150" y="286" font-family="ui-monospace, monospace" font-size="13" fill="#8893B8">Model Performance</text>
+    <polyline points="1150,460 1150,320 1170,300 1200,280 1250,270 1320,266 1380,264"
+              fill="none" stroke="#F97316" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="1150,460 1380,264" stroke="#3A3F66" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <line x1="1150" y1="460" x2="1380" y2="460" stroke="#3A3F66" stroke-width="1.5"/>
+    <line x1="1150" y1="460" x2="1150" y2="300" stroke="#3A3F66" stroke-width="1.5"/>
+    <text x="1150" y="480" font-family="ui-monospace, monospace" font-size="11" fill="#8893B8">ROC Curve</text>
+    <text x="1150" y="500" font-family="system-ui, sans-serif" font-size="22" font-weight="800" fill="#FDBA74">81% acc · 0.87 AUC</text>
+  </g>
+
+  <!-- waves -->
+  <path d="M0 610 Q 100 590 200 610 T 400 610 T 600 610 T 800 610 T 1000 610 T 1200 610 T 1400 610 T 1600 610 V 800 H 0 Z" fill="url(#water)"/>
+  <path d="M0 630 Q 100 610 200 630 T 400 630 T 600 630 T 800 630 T 1000 630 T 1200 630 T 1400 630 T 1600 630 V 800 H 0 Z" fill="#081018" opacity="0.8"/>
+  <g stroke="#F97316" stroke-opacity="0.25" stroke-width="2" fill="none">
+    <path d="M60 660 Q 90 650 120 660 T 180 660"/>
+    <path d="M1400 690 Q 1430 680 1460 690 T 1520 690"/>
+  </g>
+
+  <!-- title -->
+  <text x="800" y="730" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#E8ECFF">Titanic Survival Prediction — Logistic Regression</text>
+  <text x="800" y="758" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14" fill="#8893B8">sklearn Pipeline · GridSearchCV · Gender &amp; Class Interaction</text>
+</svg>
