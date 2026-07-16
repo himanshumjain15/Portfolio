@@ -76,7 +76,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           </ScrollReveal>
 
           {project.caseStudy ? (
-            <CaseStudySections caseStudy={project.caseStudy} />
+            <CaseStudySections caseStudy={project.caseStudy} workflow={project.workflow} />
           ) : (
             <>
               {/* Problem */}
@@ -102,6 +102,9 @@ export function ProjectDetail({ project }: { project: Project }) {
                   </p>
                 </div>
               </ScrollReveal>
+
+              {/* Workflow */}
+              {project.workflow && <WorkflowSteps steps={project.workflow} />}
 
               {/* Results */}
               <ScrollReveal>
@@ -164,7 +167,46 @@ export function ProjectDetail({ project }: { project: Project }) {
   );
 }
 
-function CaseStudySections({ caseStudy }: { caseStudy: ProjectCaseStudy }) {
+function WorkflowSteps({ steps }: { steps: string[] }) {
+  return (
+    <ScrollReveal>
+      <div className="mb-10">
+        <h2 className="text-[20px] font-display font-semibold text-text-primary mb-4">
+          Workflow
+        </h2>
+        <div>
+          {steps.map((step, i) => (
+            <div key={i} className="flex items-start gap-4 relative pb-6 last:pb-0">
+              {i < steps.length - 1 && (
+                <span
+                  className="absolute left-[15px] top-8 bottom-0 w-px"
+                  style={{ background: "var(--border-subtle)" }}
+                />
+              )}
+              <span
+                className="flex items-center justify-center w-8 h-8 rounded-full text-[13px] font-bold flex-shrink-0 z-10"
+                style={{ background: "var(--accent-projects)", color: "#fff" }}
+              >
+                {i + 1}
+              </span>
+              <p className="text-[15px] text-text-primary/85 leading-relaxed pt-1">
+                {step}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+}
+
+function CaseStudySections({
+  caseStudy,
+  workflow,
+}: {
+  caseStudy: ProjectCaseStudy;
+  workflow?: string[];
+}) {
   return (
     <>
       {/* Overview */}
@@ -206,6 +248,9 @@ function CaseStudySections({ caseStudy }: { caseStudy: ProjectCaseStudy }) {
           </p>
         </div>
       </ScrollReveal>
+
+      {/* Workflow */}
+      {workflow && <WorkflowSteps steps={workflow} />}
 
       {/* Key Features */}
       <ScrollReveal>

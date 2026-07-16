@@ -288,6 +288,7 @@ export interface Project {
   image?: string;
   category?: string;
   caseStudy?: ProjectCaseStudy;
+  workflow?: string[];
 }
 
 export const projects: Project[] = [
@@ -451,6 +452,40 @@ export const projects: Project[] = [
       ],
       footerTags: ["NLP", "BERT", "Hate Speech Detection", "Machine Learning"],
     },
+  },
+  {
+    id: "loan-prediction-ml",
+    title: "Loan Prediction — Decision Tree & Random Forest",
+    subtitle:
+      "A tree-based ML pipeline predicting loan approval from applicant data, using SHAP to explain what drives the decision.",
+    description:
+      "Predicts loan approval (Approved/Rejected) from applicant demographic and financial data using Decision Tree and Random Forest models, with SHAP for feature-level interpretability.",
+    problem:
+      "Given applicant demographic and financial information, predict whether a loan application will be Approved or Rejected — and more importantly, explain which factors drive that decision, since black-box predictions aren't actionable for lenders.",
+    approach:
+      "Analyzed 614 loan applications (12 features, moderately imbalanced at 68% approved) from the Analytics Vidhya Loan Prediction dataset. Applied log transforms and outlier removal, built sklearn Pipelines for imputation and encoding, tuned a Decision Tree with GridSearchCV and a Random Forest with RandomizedSearchCV, then used SHAP to explain feature importance and compare the final models.",
+    results: [
+      "Random Forest achieved 83.74% test accuracy and 0.7955 ROC AUC, outperforming the Decision Tree (79.67% accuracy, 0.7616 ROC AUC)",
+      "Identified Credit History as the single most powerful predictor — applicants with credit history had ~80% approval rate vs. ~8% without",
+      "Used SHAP feature importance to validate and explain model decisions beyond raw accuracy",
+      "Built reusable sklearn Pipelines for imputation and encoding to prevent data leakage during cross-validation",
+    ],
+    lessons:
+      "The biggest lesson was that a single categorical feature — credit history — dominated model decisions almost entirely, which SHAP made immediately visible in a way raw accuracy metrics couldn't. It reinforced that interpretability tools like SHAP are as important as the model itself when predictions need to be explained to stakeholders.",
+    tags: ["Python", "scikit-learn", "Decision Tree", "Random Forest", "SHAP", "GridSearchCV"],
+    year: "2026",
+    links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/loan-prediction-ml" }],
+    featured: false,
+    image: "/Portfolio/images/loan-prediction-cover.svg",
+    workflow: [
+      "Exploratory Data Analysis",
+      "Log Transform + Outlier Removal",
+      "sklearn Pipelines (Imputation + Encoding)",
+      "Decision Tree with GridSearchCV",
+      "Random Forest with RandomizedSearchCV",
+      "SHAP Feature Importance",
+      "Final Model Comparison",
+    ],
   },
   {
     id: "lm-assisted-automated-eda-pipeline",
