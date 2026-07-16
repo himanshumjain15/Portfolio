@@ -106,12 +106,12 @@ export const experiences: Experience[] = [
     metrics: [
       { value: "10M+", label: "Records Processed" },
       { value: "25%", label: "Faster Decisions" },
-      { value: "50%", label: "Feature Lift" },
+      { value: "22%", label: "Feature Lift" },
     ],
     bullets: [
       "Transformed 10M+ healthcare records into actionable insights using SQL, enabling stakeholders to track adoption trends and optimize rollout of the Tele-Manas application",
       "Designed and deployed Power BI dashboards for 10+ regional teams to track performance KPIs, reducing strategic decision cycles by 25%",
-      "Spearheaded A/B tests on 100K+ system users, assigning control and treatment groups to quantify feature lift and validate a 50% improvement prior to large-scale deployment",
+      "Spearheaded A/B tests on 100K+ platform users to evaluate an auto call routing feature, assigning control and treatment groups to quantify feature lift and validate a 22% improvement in adoption rate prior to large-scale deployment",
       "Cleaned and standardized 10M+ records using SQL, performing outlier analysis via statistical thresholds and data validation checks, improving analysis accuracy by 40 % ",
       "Orchestrated user-centric feature rollouts cross-functionally with medical professionals, engineers, and government officials, leading to a 30 % increase in adoption across the national health platform"
     ],
