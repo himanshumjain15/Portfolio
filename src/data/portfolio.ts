@@ -259,6 +259,19 @@ export const research: Research[] = [
 // PROJECTS
 // ═══════════════════════════════════════════════════════
 
+export interface ProjectCaseStudy {
+  overview: string;
+  problemStatement: string;
+  approachSummary: string;
+  systemArchitecture: string;
+  keyFeatures: string[];
+  techStack: { category: string; items: string[] }[];
+  deployment: string;
+  challenges: { challenge: string; solution: string }[];
+  improvements: string[];
+  footerTags: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -273,6 +286,8 @@ export interface Project {
   links: { label: string; url: string }[];
   featured: boolean;
   image?: string;
+  category?: string;
+  caseStudy?: ProjectCaseStudy;
 }
 
 export const projects: Project[] = [
@@ -300,10 +315,62 @@ export const projects: Project[] = [
     year: "2026",
     links: [
       { label: "GitHub", url: "https://github.com/himanshumjain15/toxicity-mining-nlp" },
-      { label: "Website", url: "https://glenpaulson.github.io/toxicity-mining-website/#/data-exploration" },
+      { label: "Live Demo", url: "https://glenpaulson.github.io/toxicity-mining-website/#/data-exploration" },
     ],
     featured: true,
     image: "/Portfolio/images/hate-speech-mining-cover.png",
+    category: "AI / ML",
+    caseStudy: {
+      overview:
+        "A machine learning project that categorizes toxic language and hate speech on social media platforms, distinguishing between generic offensive language and hate speech targeted at specific entities, users, or groups. Uses BERT and DistilBERT transformer models alongside traditional classifiers like Naive Bayes, Logistic Regression, SVM, and LightGBM. Trained on Google Jigsaw Civil Comments (1.8M rows) and TweetEval Hate Speech datasets.",
+      problemStatement:
+        "Social platforms need to separate generic offensive language from hate speech aimed at specific people or groups — a distinction generic toxicity filters routinely miss, and a hard one to learn because toxic vocabulary differs sharply from platform to platform (only 2.6% overlap between the two corpora).",
+      approachSummary:
+        "Run two preprocessing tracks over the combined corpus — TF-IDF with stopword removal for classical models and minimal normalization for transformers — then compare a classical ML baseline against a fine-tuned DistilBERT trained end-to-end on the balanced Jigsaw + TweetEval set.",
+      systemArchitecture:
+        "The pipeline spans 1.8M+ records from Google Jigsaw Civil Comments and TweetEval. Text flows through dual preprocessing tracks into two modeling paths: a classical track (TF-IDF → TruncatedSVD/LSA → clustering and linear/tree classifiers) and a transformer track (minimal normalization → DistilBERT fine-tuning), with evaluation via precision, recall, F1, and confusion-matrix analysis across both corpora.",
+      keyFeatures: [
+        "Distinguishes generic offensive language from targeted hate speech",
+        "Trained on Google Jigsaw Civil Comments (1.8M rows) and TweetEval",
+        "BERT and DistilBERT transformers with Naive Bayes, Logistic Regression, SVM, and LightGBM baselines",
+        "Dual preprocessing: TF-IDF + stopword removal and minimal normalization",
+        "TruncatedSVD (LSA) to 200 dims with KMeans (k=2) recovering toxic/non-toxic structure",
+        "DistilBERT fine-tuned end-to-end on the combined, balanced Jigsaw + TweetEval corpus",
+      ],
+      techStack: [
+        { category: "Data", items: ["Google Jigsaw Civil Comments (1.8M rows)", "TweetEval Hate Speech"] },
+        {
+          category: "Classical ML",
+          items: ["scikit-learn", "TF-IDF", "TruncatedSVD (LSA)", "KMeans", "Naive Bayes", "Logistic Regression", "SVM", "LightGBM"],
+        },
+        { category: "Deep Learning", items: ["PyTorch", "Hugging Face Transformers", "BERT", "DistilBERT"] },
+        { category: "Website", items: ["TypeScript"] },
+      ],
+      deployment: "The results and write-up are published as a static site on GitHub Pages.",
+      challenges: [
+        {
+          challenge:
+            "Only 2.6% vocabulary overlap between the forum-comment and tweet corpora, and a staged Jigsaw→Twitter fine-tune stalled around 67% accuracy.",
+          solution:
+            "Switched to direct end-to-end DistilBERT training on the combined, balanced corpus with consistent preprocessing, which trained stably across both sources.",
+        },
+        {
+          challenge: "The Jigsaw corpus was 91.7% non-toxic, making raw accuracy a misleading metric.",
+          solution: "Balanced the combined dataset and evaluated with precision, recall, F1, and confusion matrices instead of accuracy.",
+        },
+        {
+          challenge:
+            "KMeans on the TF-IDF/LSA features clustered poorly (silhouette ≈ 0.10) — toxic and non-toxic text overlap heavily in linear space.",
+          solution: "Used that finding to justify moving from classical clustering to fine-tuned DistilBERT for the classification task.",
+        },
+      ],
+      improvements: [
+        "Multi-class targeting to identify which group a hate-speech instance is aimed at",
+        "A real-time inference API for live moderation",
+        "Multilingual toxicity detection beyond English",
+      ],
+      footerTags: ["NLP", "BERT", "Hate Speech Detection", "Machine Learning"],
+    },
   },
   {
     id: "lm-assisted-automated-eda-pipeline",

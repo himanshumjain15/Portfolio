@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { MeshAurora } from "@/components/MeshAurora";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import type { Project } from "@/data/portfolio";
+import type { Project, ProjectCaseStudy } from "@/data/portfolio";
 
 export function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -27,6 +27,14 @@ export function ProjectDetail({ project }: { project: Project }) {
           {/* Header */}
           <ScrollReveal>
             <div className="mb-12">
+              {project.category && (
+                <span
+                  className="inline-block text-[12px] font-semibold uppercase tracking-[0.08em] mb-3"
+                  style={{ color: "var(--accent-projects)" }}
+                >
+                  {project.category}
+                </span>
+              )}
               <span className="text-[12px] font-mono text-text-tertiary mb-2 block">
                 {project.year}
               </span>
@@ -67,70 +75,76 @@ export function ProjectDetail({ project }: { project: Project }) {
             </div>
           </ScrollReveal>
 
-          {/* Problem */}
-          <ScrollReveal>
-            <div className="mb-10">
-              <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
-                The Problem
-              </h2>
-              <p className="text-[16px] text-text-primary/85 leading-[1.8]">
-                {project.problem}
-              </p>
-            </div>
-          </ScrollReveal>
+          {project.caseStudy ? (
+            <CaseStudySections caseStudy={project.caseStudy} />
+          ) : (
+            <>
+              {/* Problem */}
+              <ScrollReveal>
+                <div className="mb-10">
+                  <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+                    The Problem
+                  </h2>
+                  <p className="text-[16px] text-text-primary/85 leading-[1.8]">
+                    {project.problem}
+                  </p>
+                </div>
+              </ScrollReveal>
 
-          {/* Approach */}
-          <ScrollReveal>
-            <div className="mb-10">
-              <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
-                The Approach
-              </h2>
-              <p className="text-[16px] text-text-primary/85 leading-[1.8]">
-                {project.approach}
-              </p>
-            </div>
-          </ScrollReveal>
+              {/* Approach */}
+              <ScrollReveal>
+                <div className="mb-10">
+                  <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+                    The Approach
+                  </h2>
+                  <p className="text-[16px] text-text-primary/85 leading-[1.8]">
+                    {project.approach}
+                  </p>
+                </div>
+              </ScrollReveal>
 
-          {/* Results */}
-          <ScrollReveal>
-            <div className="mb-10">
-              <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
-                Results
-              </h2>
-              <ul className="space-y-3">
-                {project.results.map((result, i) => (
-                  <li
-                    key={i}
-                    className="text-[15px] text-text-primary/85 leading-relaxed pl-5 relative"
-                  >
-                    <span
-                      className="absolute left-0 top-[10px] w-2 h-2 rounded-full"
-                      style={{ background: "var(--accent-projects)", opacity: 0.6 }}
-                    />
-                    {result}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
+              {/* Results */}
+              <ScrollReveal>
+                <div className="mb-10">
+                  <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+                    Results
+                  </h2>
+                  <ul className="space-y-3">
+                    {project.results.map((result, i) => (
+                      <li
+                        key={i}
+                        className="text-[15px] text-text-primary/85 leading-relaxed pl-5 relative"
+                      >
+                        <span
+                          className="absolute left-0 top-[10px] w-2 h-2 rounded-full"
+                          style={{ background: "var(--accent-projects)", opacity: 0.6 }}
+                        />
+                        {result}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
 
-          {/* Lessons */}
-          <ScrollReveal>
-            <div
-              className="p-6 rounded-xl mb-10"
-              style={{
-                background: "color-mix(in srgb, var(--accent-projects) 6%, var(--surface-0))",
-                borderLeft: "4px solid var(--accent-projects)",
-              }}
-            >
-              <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
-                Lessons Learned
-              </h2>
-              <p className="text-[15px] text-text-primary/85 leading-[1.8] italic">
-                {project.lessons}
-              </p>
-            </div>
-          </ScrollReveal>
+              {/* Lessons */}
+              <ScrollReveal>
+                <div
+                  className="p-6 rounded-xl mb-10"
+                  style={{
+                    background: "color-mix(in srgb, var(--accent-projects) 6%, var(--surface-0))",
+                    borderLeft: "4px solid var(--accent-projects)",
+                  }}
+                >
+                  <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+                    Lessons Learned
+                  </h2>
+                  <p className="text-[15px] text-text-primary/85 leading-[1.8] italic">
+                    {project.lessons}
+                  </p>
+                </div>
+              </ScrollReveal>
+            </>
+          )}
 
           {/* Back */}
           <div className="pt-8 border-t border-border-subtle">
@@ -145,6 +159,184 @@ export function ProjectDetail({ project }: { project: Project }) {
             </Link>
           </div>
         </div>
+      </div>
+    </>
+  );
+}
+
+function CaseStudySections({ caseStudy }: { caseStudy: ProjectCaseStudy }) {
+  return (
+    <>
+      {/* Overview */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+            Overview
+          </h2>
+          <p className="text-[16px] text-text-primary/85 leading-[1.8]">
+            {caseStudy.overview}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* Problem Statement & Approach */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+            Problem Statement &amp; Approach
+          </h2>
+          <p className="text-[16px] text-text-primary/85 leading-[1.8] mb-3">
+            {caseStudy.problemStatement}
+          </p>
+          <p className="text-[16px] text-text-primary/85 leading-[1.8]">
+            <span className="font-semibold text-text-primary">Approach: </span>
+            {caseStudy.approachSummary}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* System Architecture */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+            System Architecture
+          </h2>
+          <p className="text-[16px] text-text-primary/85 leading-[1.8]">
+            {caseStudy.systemArchitecture}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* Key Features */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+            Key Features
+          </h2>
+          <ul className="space-y-3">
+            {caseStudy.keyFeatures.map((feature, i) => (
+              <li
+                key={i}
+                className="text-[15px] text-text-primary/85 leading-relaxed pl-5 relative"
+              >
+                <span
+                  className="absolute left-0 top-[10px] w-2 h-2 rounded-full"
+                  style={{ background: "var(--accent-projects)", opacity: 0.6 }}
+                />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ScrollReveal>
+
+      {/* Technical Stack */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-4">
+            Technical Stack
+          </h2>
+          <div className="space-y-4">
+            {caseStudy.techStack.map((group) => (
+              <div key={group.category}>
+                <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-text-tertiary mb-2">
+                  {group.category}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="tag-link"
+                      style={{ "--tag-color": "var(--accent-projects)" } as React.CSSProperties}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Deployment */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+            Deployment
+          </h2>
+          <p className="text-[16px] text-text-primary/85 leading-[1.8]">
+            {caseStudy.deployment}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* Challenges & Solutions */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-4">
+            Challenges &amp; Solutions
+          </h2>
+          <div className="space-y-5">
+            {caseStudy.challenges.map((item, i) => (
+              <div
+                key={i}
+                className="p-4 rounded-xl"
+                style={{
+                  background: "color-mix(in srgb, var(--accent-projects) 5%, var(--surface-0))",
+                  border: "1px solid var(--border-subtle)",
+                }}
+              >
+                <p className="text-[15px] text-text-primary/85 leading-relaxed mb-2">
+                  <span className="font-semibold text-text-primary">Challenge: </span>
+                  {item.challenge}
+                </p>
+                <p className="text-[15px] text-text-primary/85 leading-relaxed">
+                  <span className="font-semibold" style={{ color: "var(--accent-projects)" }}>
+                    Solution:{" "}
+                  </span>
+                  {item.solution}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Improvements */}
+      <ScrollReveal>
+        <div className="mb-10">
+          <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+            Improvements
+          </h2>
+          <ul className="space-y-3">
+            {caseStudy.improvements.map((item, i) => (
+              <li
+                key={i}
+                className="text-[15px] text-text-primary/85 leading-relaxed pl-5 relative"
+              >
+                <span
+                  className="absolute left-0 top-[10px] w-2 h-2 rounded-full"
+                  style={{ background: "var(--accent-projects)", opacity: 0.6 }}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ScrollReveal>
+
+      {/* Footer tags */}
+      <div className="flex flex-wrap gap-2 mb-10">
+        {caseStudy.footerTags.map((tag) => (
+          <span
+            key={tag}
+            className="tag-link"
+            style={{ "--tag-color": "var(--accent-projects)" } as React.CSSProperties}
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </>
   );
