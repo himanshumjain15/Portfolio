@@ -171,7 +171,6 @@ export const education: Education[] = [
     degree: "Master of Science in Data Science",
     dates: "Aug 2025 — May 2027",
     location: "Boulder, CO",
-    gpa: "3.67/4.0",
     coursework: ["Statistical Inference", "Data Mining", "Big Data Architecture"],
   },
   {
