@@ -458,11 +458,11 @@ export const projects: Project[] = [
     subtitle:
       "An end-to-end Python workflow that ingests any CSV, computes robust statistics, and generates verified LLM-driven dataset insights.",
     description:
-      "Built an automated EDA pipeline using Python, Pandas, and Seaborn with Gemini API integration and a fact-verification layer to ensure narrative outputs use only computed values.",
+      "Built an automated EDA pipeline using Python, Pandas, and Seaborn with Claude API integration and a fact-verification layer to ensure narrative outputs use only computed values.",
     problem:
       "Exploratory data analysis is often manual, repetitive, and difficult to scale across datasets. Analysts spend significant time producing baseline statistics, checking data quality, creating visualizations, and writing summaries, which slows iteration and increases reporting inconsistency.",
     approach:
-      "Developed a reusable Python pipeline that accepts arbitrary CSV inputs, computes descriptive statistics, performs outlier detection with the IQR method, and auto-generates 5+ visualizations using Seaborn. Added Gemini API integration behind a verification layer that passes only computed statistical outputs to the model, constraining generated narratives to factual dataset values.",
+      "Developed a reusable Python pipeline that accepts arbitrary CSV inputs, computes descriptive statistics, performs outlier detection with the IQR method, and auto-generates 5+ visualizations using Seaborn. Added Claude API integration behind a verification layer that passes only computed statistical outputs to the model, constraining generated narratives to factual dataset values.",
     results: [
       "Automated end-to-end EDA from raw CSV ingestion to structured Markdown reporting",
       "Generated descriptive statistics, IQR-based outlier checks, and 5+ visualizations per run",
@@ -471,7 +471,7 @@ export const projects: Project[] = [
     ],
     lessons:
       "The key takeaway was that LLM quality in analytics depends heavily on context control, not just prompting. By restricting model input to verified computed metrics, the pipeline retained narrative flexibility while preserving statistical correctness and trustworthiness.",
-    tags: ["Python", "Gemini API", "Pandas", "Seaborn", "EDA", "Automation"],
+    tags: ["Python", "Claude API", "Pandas", "Seaborn", "EDA", "Automation"],
     year: "2026",
     links: [
       {
@@ -480,6 +480,7 @@ export const projects: Project[] = [
       },
     ],
     featured: false,
+    image: "/Portfolio/images/lm-assisted-eda-cover.svg",
   },
 
   {
@@ -505,6 +506,7 @@ export const projects: Project[] = [
     year: "2025",
     links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/wine-quality-analysis" }],
     featured: false,
+    image: "/Portfolio/images/wine-quality-cover.svg",
   },
 ];
 

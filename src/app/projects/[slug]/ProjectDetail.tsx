@@ -136,7 +136,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                   }}
                 >
                   <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
-                    Lessons Learned
+                    Conclusion
                   </h2>
                   <p className="text-[15px] text-text-primary/85 leading-[1.8] italic">
                     {project.lessons}
