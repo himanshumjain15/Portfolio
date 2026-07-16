@@ -272,35 +272,38 @@ export interface Project {
   year: string;
   links: { label: string; url: string }[];
   featured: boolean;
+  image?: string;
 }
 
 export const projects: Project[] = [
   {
     id: "hate-speech-mining",
-    title: "Social Media Hate Speech & Toxicity Mining",
+    title: "Toxicity Mining",
     subtitle:
-      "An NLP pipeline analyzing 1.77M+ social media records to detect and classify hate speech across 7 toxicity categories.",
+      "NLP pipeline classifying hate speech and toxicity across 1.8M+ social media records using classical ML and transformer-based models, with two-stage DistilBERT domain adaptation across corpora.",
     description:
-      "End-to-end text analysis pipeline using TF-IDF, SVD embeddings, and KMeans clustering on Google Jigsaw and TweetEval datasets.",
+      "A machine learning project that categorizes toxic language and hate speech on social media platforms, distinguishing between generic offensive language and hate speech targeted at specific entities, users, or groups. Uses BERT and DistilBERT transformer models alongside traditional classifiers like Naive Bayes, Logistic Regression, SVM, and LightGBM. Trained on Google Jigsaw Civil Comments (1.8M rows) and TweetEval Hate Speech datasets.",
     problem:
-      "Online hate speech is a growing problem, but detecting it at scale requires understanding the nuances of toxic language across platforms and contexts. Existing keyword-based approaches miss implicit toxicity, and training classifiers requires understanding the structure and distribution of real-world toxic text data.",
+      "Social platforms need to separate generic offensive language from hate speech aimed at specific people or groups — a distinction generic toxicity filters routinely miss, and a hard one to learn because toxic vocabulary differs sharply from platform to platform (only 2.6% overlap between the two corpora).",
     approach:
-      "Built an end-to-end text analysis pipeline processing 1.77 million social media records from Google Jigsaw and TweetEval datasets. The pipeline uses TF-IDF vectorization, SVD for dimensionality reduction, and KMeans clustering to identify patterns across 7 toxicity categories. Used t-SNE visualization, toxicity correlation heatmaps, and WordCloud analysis to understand dataset characteristics before modeling.",
+      "Ran two preprocessing tracks over the combined corpus — TF-IDF with stopword removal for classical models and minimal normalization for transformers — then compared a classical ML baseline (TF-IDF → TruncatedSVD/LSA → clustering and linear/tree classifiers) against a fine-tuned DistilBERT trained end-to-end on the balanced Jigsaw + TweetEval set, evaluating both with precision, recall, F1, and confusion-matrix analysis across corpora.",
     results: [
-      "Processed and analyzed 1.77M+ social media records across two major datasets",
-      "Revealed 97.4% vocabulary divergence between datasets, indicating domain-specific language patterns",
-      "Identified 91.5% class imbalance — a critical finding for model training strategy",
-      "Produced visualizations (t-SNE, heatmaps, WordClouds) that informed feature engineering for BERT and LightGBM",
+      "Trained and evaluated across 1.8M+ records from Google Jigsaw Civil Comments and TweetEval Hate Speech datasets",
+      "Found only 2.6% vocabulary overlap between the two corpora, revealing sharp platform-specific toxic language patterns",
+      "TruncatedSVD (LSA) to 200 dimensions with KMeans (k=2) recovered toxic/non-toxic structure, but clustered poorly (silhouette ≈ 0.10) on linearly inseparable features",
+      "Switched from a staged Jigsaw→Twitter fine-tune (stalled at ~67% accuracy) to end-to-end DistilBERT training on the combined, balanced corpus, which trained stably across both sources",
+      "Evaluated with precision, recall, F1, and confusion matrices instead of raw accuracy, since Jigsaw was 91.7% non-toxic",
     ],
     lessons:
-      "The biggest lesson was that exploratory data analysis is not a box to check — it fundamentally shaped our modeling decisions. Discovering the extreme vocabulary divergence between Jigsaw and TweetEval meant that a model trained on one would likely fail on the other without careful domain adaptation.",
-    tags: ["NLP", "Text Mining", "Python", "scikit-learn", "Clustering"],
+      "The biggest lesson was that classical clustering (TF-IDF + LSA + KMeans) couldn't linearly separate toxic from non-toxic text, which justified moving to a fine-tuned DistilBERT model trained end-to-end on the combined corpus. Balancing the dataset and evaluating with precision, recall, and F1 rather than accuracy was essential given Jigsaw's 91.7% non-toxic skew. Future work includes multi-class target identification, a real-time moderation API, and multilingual toxicity detection.",
+    tags: ["Python", "BERT", "DistilBERT", "LightGBM", "TF-IDF"],
     year: "2026",
     links: [
       { label: "GitHub", url: "https://github.com/himanshumjain15/toxicity-mining-nlp" },
       { label: "Website", url: "https://glenpaulson.github.io/toxicity-mining-website/#/data-exploration" },
     ],
     featured: true,
+    image: "/Portfolio/images/hate-speech-mining-cover.png",
   },
   {
     id: "lm-assisted-automated-eda-pipeline",

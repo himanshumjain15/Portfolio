@@ -46,6 +46,16 @@ export function ProjectsSection() {
                   </span>
                 </div>
 
+                {featured.image && (
+                  <div className="rounded-xl overflow-hidden mb-6 border border-border-subtle">
+                    <img
+                      src={featured.image}
+                      alt={featured.title}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
                   <div>
                     <h3 className="text-[26px] font-display font-semibold text-text-primary mb-2 group-hover:text-accent-projects transition-colors duration-200">
