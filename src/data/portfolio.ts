@@ -62,7 +62,7 @@ export const quickInfo = [
 
 export const stats = [
   { label: "Records Processed", value: 10, suffix: "M+", accent: "var(--accent-about)" },
-  { label: "Classification Accuracy", value: 99, suffix: "%", accent: "var(--accent-research)" },
+  { label: "Classification Accuracy", value: 92, suffix: "%", accent: "var(--accent-research)" },
   { label: "Text Records Analyzed", value: 1.77, suffix: "M+", accent: "var(--accent-projects)" },
   { label: "Industry Internships", value: 2, suffix: "", accent: "var(--accent-experience)" },
 ];
@@ -134,6 +134,22 @@ export const experiences: Experience[] = [
     ],
     tags: ["Python", "SQL", "Tableau", "Excel", "Supply Chain"],
   },
+  {
+    company: "Manipal Institute of Technology",
+    role: "Research Intern",
+    location: "Manipal, India",
+    dates: "Oct 2023 — Jan 2024",
+    metrics: [
+      { value: "92%", label: "Accuracy" },
+      { value: "5", label: "Layer CNN" },
+      { value: "1", label: "Best Paper Award" },
+    ],
+    bullets: [
+      "Engineered a 5-layer CNN using PyTorch, optimized with a Sine Cosine Algorithm (SCA), classifying lung CT scans into benign, malignant, and normal categories with 92% accuracy",
+      "Published research at the 5th International Conference on Data Analytics (London, 2024), winning Best Paper Award for the proposed automated lung cancer screening framework",
+    ],
+    tags: ["PyTorch", "CNN", "Deep Learning", "Medical Imaging", "Sine Cosine Algorithm"],
+  },
 ];
 
 // ═══════════════════════════════════════════════════════
@@ -195,13 +211,13 @@ export const research: Research[] = [
     year: "2024",
     authors: "Himanshu Jain et al.",
     summary:
-      "Developed a 5-layer CNN optimized with the Sine Cosine Algorithm to classify CT lung scans with 99% accuracy on imbalanced medical datasets, demonstrating that metaheuristic hyperparameter optimization can significantly outperform grid and random search for medical imaging tasks.",
+      "Developed a 5-layer CNN optimized with the Sine Cosine Algorithm to classify CT lung scans with 92% accuracy on imbalanced medical datasets, demonstrating that metaheuristic hyperparameter optimization can significantly outperform grid and random search for medical imaging tasks.",
     problem:
       "Lung cancer remains the leading cause of cancer-related deaths, and early detection from CT scans is critical. Existing deep learning models struggle with class imbalance in medical datasets, often missing minority-class diagnoses that are the most clinically important.",
     approach:
       "Designed a 5-layer CNN architecture and optimized hyperparameters using the Sine Cosine Algorithm (SCA), a metaheuristic that explores the parameter space more effectively than traditional grid search. Used TensorFlow for implementation, with careful handling of class imbalance through augmentation and weighted loss functions.",
     findings: [
-      "Achieved 99% classification accuracy on CT lung scan dataset",
+      "Achieved 92% classification accuracy on CT lung scan dataset",
       "Outperformed baseline CNN and traditional ML methods on imbalanced data",
       "Won Best Paper Award at the conference, recognizing innovation in deep learning optimization",
     ],
@@ -354,7 +370,7 @@ export const skillGroups: SkillGroup[] = [
     title: "ML & Deep Learning",
     accent: "var(--accent-projects)",
     skills: [
-      { name: "CNN", proof: "Lung Cancer — 99% accuracy", level: "proficient" },
+      { name: "CNN", proof: "Lung Cancer — 92% accuracy", level: "proficient" },
       { name: "NLP & Text Mining", proof: "1.77M records analyzed", level: "proficient" },
       { name: "TensorFlow", proof: "Lung Cancer Detection", level: "proficient" },
       { name: "KMeans Clustering", proof: "Hate Speech Mining", level: "proficient" },
@@ -406,6 +422,6 @@ export const certifications = [
 export const floatingBadges = [
   { label: "Python", proof: "All Projects" },
   { label: "SQL", proof: "10M+ Records" },
-  { label: "TensorFlow", proof: "99% Accuracy" },
+  { label: "TensorFlow", proof: "92% Accuracy" },
   { label: "NLP", proof: "1.77M Records" },
 ];
