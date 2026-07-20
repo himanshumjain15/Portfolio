@@ -316,7 +316,7 @@ export const projects: Project[] = [
     tags: ["Python", "GPT-4o-mini", "FAISS", "PyMuPDF", "MongoDB", "AWS EC2", "GCP Cloud Run"],
     year: "2026",
     links: [
-      { label: "GitHub", url: "https://github.com/himanshumjain15/intelli-talent-alignment" },
+      { label: "GitHub", url: "https://github.com/himanshumjain15/intelli-talent-alignment." },
       { label: "Live Demo", url: "https://intelli-talent.ddns.net/landing.html" },
     ],
     featured: false,
