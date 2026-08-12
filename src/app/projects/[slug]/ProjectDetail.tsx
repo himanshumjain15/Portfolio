@@ -200,6 +200,38 @@ function WorkflowSteps({ steps }: { steps: string[] }) {
   );
 }
 
+function DataTable({ table }: { table: { headers: string[]; rows: string[][] } }) {
+  return (
+    <div className="overflow-x-auto mt-4 rounded-xl border border-border-subtle">
+      <table className="w-full text-[14px] border-collapse">
+        <thead>
+          <tr style={{ background: "color-mix(in srgb, var(--accent-projects) 8%, transparent)" }}>
+            {table.headers.map((h) => (
+              <th
+                key={h}
+                className="text-left font-semibold text-text-primary px-4 py-2.5 whitespace-nowrap"
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, i) => (
+            <tr key={i} className="border-t border-border-subtle">
+              {row.map((cell, j) => (
+                <td key={j} className="px-4 py-2.5 text-text-primary/85 whitespace-nowrap">
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function CaseStudySections({
   caseStudy,
   workflow,
@@ -234,6 +266,7 @@ function CaseStudySections({
             <span className="font-semibold text-text-primary">Approach: </span>
             {caseStudy.approachSummary}
           </p>
+          {caseStudy.approachTable && <DataTable table={caseStudy.approachTable} />}
         </div>
       </ScrollReveal>
 
@@ -347,6 +380,59 @@ function CaseStudySections({
           </div>
         </div>
       </ScrollReveal>
+
+      {/* Results */}
+      {(caseStudy.resultsSummary || caseStudy.resultsTable) && (
+        <ScrollReveal>
+          <div className="mb-10">
+            <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+              Results
+            </h2>
+            {caseStudy.resultsTable && <DataTable table={caseStudy.resultsTable} />}
+            {caseStudy.resultsSummary && (
+              <p
+                className="text-[15px] text-text-primary/85 leading-[1.8] mt-4 p-4 rounded-xl"
+                style={{
+                  background: "color-mix(in srgb, var(--accent-projects) 6%, var(--surface-0))",
+                  borderLeft: "4px solid var(--accent-projects)",
+                }}
+              >
+                {caseStudy.resultsSummary}
+              </p>
+            )}
+            {caseStudy.resultsNote && (
+              <p className="text-[14px] text-text-tertiary leading-relaxed mt-3">
+                {caseStudy.resultsNote}
+              </p>
+            )}
+          </div>
+        </ScrollReveal>
+      )}
+
+      {/* Honest Limitations */}
+      {caseStudy.limitations && (
+        <ScrollReveal>
+          <div className="mb-10">
+            <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+              Honest Limitations
+            </h2>
+            <ul className="space-y-3">
+              {caseStudy.limitations.map((item, i) => (
+                <li
+                  key={i}
+                  className="text-[15px] text-text-primary/85 leading-relaxed pl-5 relative"
+                >
+                  <span
+                    className="absolute left-0 top-[10px] w-2 h-2 rounded-full"
+                    style={{ background: "var(--accent-projects)", opacity: 0.6 }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </ScrollReveal>
+      )}
 
       {/* Improvements */}
       <ScrollReveal>

@@ -263,11 +263,16 @@ export interface ProjectCaseStudy {
   overview: string;
   problemStatement: string;
   approachSummary: string;
+  approachTable?: { headers: string[]; rows: string[][] };
   systemArchitecture: string;
   keyFeatures: string[];
   techStack: { category: string; items: string[] }[];
   deployment: string;
   challenges: { challenge: string; solution: string }[];
+  resultsSummary?: string;
+  resultsTable?: { headers: string[]; rows: string[][] };
+  resultsNote?: string;
+  limitations?: string[];
   improvements: string[];
   footerTags: string[];
 }
@@ -292,6 +297,125 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: "cinematch",
+    title: "CineMatch — Hybrid Movie Recommender",
+    subtitle:
+      "A hybrid movie recommender validated with a real A/B experiment — a 44.9% relative lift over a popularity baseline (p = 0.00072) — and deployed as a live API with a public demo.",
+    description:
+      "A movie recommendation system that learns what someone will enjoy from how people behave, not from what films are labelled as. It runs as a live web service on AWS with a public demo, and its central claim was tested with a proper A/B experiment rather than asserted.",
+    problem:
+      "Every team building recommendations faces the same question before investing in personalization: is it actually worth it? A \"most popular\" list is nearly free to build and surprisingly hard to beat, because popular films really are widely liked. So the project was framed as a hypothesis to test, not a model to build — H0: a personalized hybrid model performs about the same as a popularity baseline; H1: the hybrid performs significantly better.",
+    approach:
+      "Three models were built to answer it: a popularity baseline, a content-based model (genre matching), and a collaborative filtering model (ALS), blended into a 90% CF / 10% content hybrid. Two findings were not obvious in advance — content-based filtering alone was the worst approach by a wide margin despite looking the most plausible, and exploratory analysis (98.3% empty interaction matrix, top 10% of films absorbing 60% of ratings) drove the design rather than following it.",
+    results: [
+      "Hybrid model achieved 43.65% hit-rate@10 vs. 31.13% for the popularity baseline and just 5.25% for content-based alone",
+      "A/B experiment showed a 13.19 percentage-point lift (44.9% relative improvement) at p = 0.00072",
+      "The lift's 95% CI (5.64 to 20.74 points) clears the pre-registered 4.67-point significance threshold even at its pessimistic end",
+      "Deployed as a live FastAPI + Postgres service on AWS EC2 with a public Streamlit demo, not just a notebook",
+    ],
+    lessons:
+      "The honest caveats matter as much as the result: this is an offline/counterfactual experiment, not a live one; the ~300-viewers-per-group sample has strong power for the effect observed but would likely miss a smaller one; and tuning the blend weight on the same held-out data used for significance testing gives the hybrid a small home-field advantage that a stricter design would remove.",
+    tags: ["Python", "FastAPI", "PostgreSQL", "Docker", "AWS", "Streamlit"],
+    year: "2026",
+    links: [
+      { label: "GitHub", url: "https://github.com/himanshumjain15/recommendation-system" },
+      { label: "Live Demo", url: "https://himanshumjain15-recsys.streamlit.app" },
+    ],
+    featured: false,
+    image: "/Portfolio/images/cinematch-cover.png",
+    category: "AI / ML",
+    caseStudy: {
+      overview:
+        "A movie recommendation system that learns what someone will enjoy from how people behave, not from what films are labelled as. It runs as a live web service on AWS with a public demo, and its central claim was tested with a proper A/B experiment rather than asserted. The result: personalized recommendations found something a viewer genuinely liked for 43 out of every 100 viewers, versus 31 for showing everyone the same popular films — a gap statistically significant at p = 0.00072. Most recommender projects stop at a notebook with an accuracy score; this one ships a Postgres database, a REST API, containerized deployment, a pre-registered experiment, and a front end anyone can click.",
+      problemStatement:
+        "Every team building recommendations faces the same question before investing in personalization: is it actually worth it? A \"most popular\" list is nearly free to build and surprisingly hard to beat, because popular films really are widely liked. So the project was framed as a hypothesis to test, not a model to build — H0: a personalized hybrid model performs about the same as a popularity baseline. H1: the hybrid performs significantly better.",
+      approachSummary:
+        "Three models were built to test the hypothesis: a popularity baseline, a content-based model using genre matching, and a collaborative filtering model (ALS) capturing behavioral similarity, blended into a 90% CF / 10% content hybrid. Two findings were not obvious in advance. Content-based filtering alone was the worst approach by a wide margin — six times worse than simply showing popular films — despite producing the most convincing-looking output, because genre tags say nothing about whether a film is any good or whether anyone will actually watch it. And exploratory analysis drove the design rather than following it: the interaction matrix was 98.3% empty, which is why collaborative filtering alone was expected to struggle for sparse users and why blending in a content signal was worth it at all, while the top 10% of films absorbing 60% of all ratings is what made the popularity baseline a serious opponent rather than a strawman.",
+      approachTable: {
+        headers: ["Approach", "How it decides", "Hit-rate@10"],
+        rows: [
+          ["Popularity", "Most-rated films, same for everyone", "31.13%"],
+          ["Content-based", "Films with matching genres", "5.25%"],
+          ["Collaborative filtering", "What similar-behaving people liked", "42.13%"],
+          ["Hybrid (90% CF, 10% content)", "Both signals blended", "43.65%"],
+        ],
+      },
+      systemArchitecture:
+        "MovieLens data loads into Postgres, feeding three models (popularity, content-based, and ALS collaborative filtering), served through a FastAPI layer that a Streamlit demo calls over HTTP. The data layer uses five Postgres tables (users, items, interactions, recommendation_logs, experiment_assignments) with the schema initialized automatically on first container start. FastAPI loads the trained model and similarity matrix once at startup and answers requests in milliseconds, writing every recommendation served back to Postgres. Users are bucketed deterministically into control and treatment groups, each served by a different model, with results compared via a two-proportion test. The Streamlit front end calls the live API rather than holding its own copy of the model, so what a visitor sees is the deployed system's real output.",
+      keyFeatures: [
+        "Three models compared honestly — the demo shows the same viewer's recommendations from all three approaches side by side, each labelled with its measured hit rate, including the weakest one",
+        "Recommendations that log themselves — every response is written to recommendation_logs with the model that produced it, giving the A/B analysis a real audit trail instead of guesswork",
+        "Deterministic bucketing via an MD5 hash of user ID — Python's built-in hash() was rejected because it returns integers unchanged, which would have quietly split users by odd and even",
+        "Pre-registered success criteria — the minimum detectable effect (15% relative lift) and the analysis method were fixed before looking at any results, so the threshold couldn't be rationalized after the fact",
+        "Personas grounded in real data — example viewers are real MovieLens users with genuinely dominant taste, shown alongside their actual genre breakdown after an earlier mislabeling (a \"comedy lover\" who was 57% drama) was caught and corrected",
+      ],
+      techStack: [
+        { category: "Modeling", items: ["Python", "pandas", "NumPy", "scikit-learn", "implicit (ALS)", "SciPy", "statsmodels"] },
+        { category: "Backend", items: ["FastAPI", "PostgreSQL", "SQLAlchemy", "psycopg2"] },
+        { category: "Infrastructure", items: ["Docker", "Docker Compose", "AWS EC2", "Streamlit Community Cloud"] },
+        { category: "Front End", items: ["Streamlit", "Custom CSS", "TMDB API"] },
+      ],
+      deployment:
+        "Deployed as two separate pieces. The API and database run on a single AWS EC2 instance using the same Docker Compose file as local development, so there's no separate deployment configuration that can drift, with an Elastic IP keeping the address stable across instance restarts. The Streamlit demo deploys straight from the GitHub repository to Streamlit Community Cloud, redeploying automatically on every push, and calls the EC2 API over HTTP rather than holding its own copy of the model. Because the raw dataset is deliberately not committed to the repository, both the container build and the demo download it on first run, so a fresh clone works without manual setup.",
+      challenges: [
+        {
+          challenge:
+            "The compiled ALS code depends on libgomp, which the slim Python base image doesn't ship — the container built cleanly and crashed on startup.",
+          solution:
+            "Installed the missing system library. This is exactly the class of hidden dependency that containerization exists to expose — it had been invisible locally because the host already had it.",
+        },
+        {
+          challenge:
+            "The API tried to reach Postgres at \"localhost\", which inside a container means the container itself, not the database next to it.",
+          solution: "Fixed by addressing Postgres by its Docker Compose service name instead.",
+        },
+        {
+          challenge:
+            "The content similarity matrix needs roughly 700MB, but the EC2 instance had only 1GB total, shared with the OS and the database — causing out-of-memory failures.",
+          solution: "Added swap space, which solved it without upgrading to a paid instance size.",
+        },
+        {
+          challenge:
+            "After a reboot the site went down only partly: Postgres came back because it had a restart policy and the API didn't — the instance looked healthy while serving nothing.",
+          solution: "Configured both services to restart automatically.",
+        },
+        {
+          challenge: "Repeated image builds exhausted an 8GB disk volume mid-deployment.",
+          solution:
+            "Pruning unused layers unblocked it immediately; resizing the volume and extending the filesystem fixed it properly.",
+        },
+        {
+          challenge:
+            "The demo first deployed with an invalid TMDB API key, so every poster lookup returned nothing, and the cache stored those empty results — correcting the key changed nothing because the cache answered instead of retrying.",
+          solution:
+            "Only a restart cleared it. Caching a failure isn't the same as caching a result, so the app now surfaces a visible warning when the key is missing instead of failing silently.",
+        },
+      ],
+      resultsSummary:
+        "Lift: 13.19 percentage points, a 44.9% relative improvement, p = 0.00072. The lift's confidence interval runs from 5.64 to 20.74 points — even its pessimistic end clears the 4.67-point threshold set before the experiment ran, so the result is practically as well as statistically significant.",
+      resultsTable: {
+        headers: ["Group", "Hit-rate@10", "n", "95% CI"],
+        rows: [
+          ["Control (popularity)", "29.35%", "293", "24.43% – 34.81%"],
+          ["Treatment (hybrid)", "42.54%", "315", "37.20% – 48.06%"],
+        ],
+      },
+      limitations: [
+        "This is an offline experiment, not a live one — it measures recommendations against what viewers historically went on to rate highly, not against how they'd react to being shown these specific films. That's counterfactual evaluation, a known limitation of offline recommender testing rather than a shortcut taken here.",
+        "The sample is small and fixed — with roughly 300 viewers per group, the test has about 90% power for the effect actually observed but only about 25% power for the smaller effect originally set as the threshold, and no more data can be collected.",
+        "Tuning and testing used the same held-out data — the blend weight was chosen by its performance on the data later used for the significance test, giving the hybrid a small home-field advantage. A stricter design would separate a validation set for tuning from an untouched test set.",
+      ],
+      improvements: [
+        "Richer content signal — genre tags are coarse, and many unrelated films share identical tag sets, which is a large part of why content-based scoring performed so poorly; plot summaries or sentence-transformer embeddings would likely change that conclusion",
+        "A separate validation set for hyperparameter tuning, removing the double-dipping caveat above",
+        "Scheduled retraining — the model is trained once and loaded at startup, so new users, films, and ratings are invisible until it's rebuilt",
+        "Cold-start handling — viewers with no history get nothing today; content-based scoring could cover them, which is why it's kept in the blend despite its standalone performance",
+        "Approximate nearest-neighbour retrieval — a full similarity matrix is fine at this scale, but a FAISS index would be the standard answer at a realistic catalogue size",
+      ],
+      footerTags: ["Recommender Systems", "A/B Testing", "Collaborative Filtering", "MLOps"],
+    },
+  },
   {
     id: "intellitalent",
     title: "IntelliTalent - Resume to Job Matching",
