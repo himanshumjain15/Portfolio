@@ -269,6 +269,7 @@ export interface ProjectCaseStudy {
   techStack: { category: string; items: string[] }[];
   deployment: string;
   challenges: { challenge: string; solution: string }[];
+  resultsIntro?: string;
   resultsSummary?: string;
   resultsTable?: { headers: string[]; rows: string[][] };
   resultsNote?: string;
@@ -342,7 +343,7 @@ export const projects: Project[] = [
         ],
       },
       systemArchitecture:
-        "MovieLens data loads into Postgres, feeding three models (popularity, content-based, and ALS collaborative filtering), served through a FastAPI layer that a Streamlit demo calls over HTTP. The data layer uses five Postgres tables (users, items, interactions, recommendation_logs, experiment_assignments) with the schema initialized automatically on first container start. FastAPI loads the trained model and similarity matrix once at startup and answers requests in milliseconds, writing every recommendation served back to Postgres. Users are bucketed deterministically into control and treatment groups, each served by a different model, with results compared via a two-proportion test. The Streamlit front end calls the live API rather than holding its own copy of the model, so what a visitor sees is the deployed system's real output.",
+        "MovieLens data feeds Postgres, which trains three models. FastAPI serves them and logs every recommendation back to Postgres. The Streamlit demo calls that API over HTTP. The data layer uses five Postgres tables (users, items, interactions, recommendation_logs, experiment_assignments) with the schema initialized automatically on first container start. FastAPI loads the trained model and similarity matrix once at startup and answers requests in milliseconds, writing every recommendation served back to Postgres. Users are bucketed deterministically into control and treatment groups, each served by a different model, with results compared via a two-proportion test. The Streamlit front end calls the live API rather than holding its own copy of the model, so what a visitor sees is the deployed system's real output.",
       keyFeatures: [
         "Three models compared honestly — the demo shows the same viewer's recommendations from all three approaches side by side, each labelled with its measured hit rate, including the weakest one",
         "Recommendations that log themselves — every response is written to recommendation_logs with the model that produced it, giving the A/B analysis a real audit trail instead of guesswork",
@@ -392,6 +393,8 @@ export const projects: Project[] = [
             "Only a restart cleared it. Caching a failure isn't the same as caching a result, so the app now surfaces a visible warning when the key is missing instead of failing silently.",
         },
       ],
+      resultsIntro:
+        "From the A/B experiment, with viewers split into two groups and each group served by a different model:",
       resultsSummary:
         "Lift: 13.19 percentage points, a 44.9% relative improvement, p = 0.00072. The lift's confidence interval runs from 5.64 to 20.74 points — even its pessimistic end clears the 4.67-point threshold set before the experiment ran, so the result is practically as well as statistically significant.",
       resultsTable: {
@@ -401,6 +404,8 @@ export const projects: Project[] = [
           ["Treatment (hybrid)", "42.54%", "315", "37.20% – 48.06%"],
         ],
       },
+      resultsNote:
+        "Hit-rate@10 counts a viewer as a hit if at least one of the ten recommended films was something they went on to rate highly in data the model never saw.",
       limitations: [
         "This is an offline experiment, not a live one — it measures recommendations against what viewers historically went on to rate highly, not against how they'd react to being shown these specific films. That's counterfactual evaluation, a known limitation of offline recommender testing rather than a shortcut taken here.",
         "The sample is small and fixed — with roughly 300 viewers per group, the test has about 90% power for the effect actually observed but only about 25% power for the smaller effect originally set as the threshold, and no more data can be collected.",

@@ -253,6 +253,39 @@ function CaseStudySections({
         </div>
       </ScrollReveal>
 
+      {/* Results */}
+      {(caseStudy.resultsSummary || caseStudy.resultsTable) && (
+        <ScrollReveal>
+          <div className="mb-10">
+            <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
+              Results
+            </h2>
+            {caseStudy.resultsIntro && (
+              <p className="text-[16px] text-text-primary/85 leading-[1.8] mb-3">
+                {caseStudy.resultsIntro}
+              </p>
+            )}
+            {caseStudy.resultsTable && <DataTable table={caseStudy.resultsTable} />}
+            {caseStudy.resultsSummary && (
+              <p
+                className="text-[15px] text-text-primary/85 leading-[1.8] mt-4 p-4 rounded-xl"
+                style={{
+                  background: "color-mix(in srgb, var(--accent-projects) 6%, var(--surface-0))",
+                  borderLeft: "4px solid var(--accent-projects)",
+                }}
+              >
+                {caseStudy.resultsSummary}
+              </p>
+            )}
+            {caseStudy.resultsNote && (
+              <p className="text-[14px] text-text-tertiary leading-relaxed mt-3">
+                {caseStudy.resultsNote}
+              </p>
+            )}
+          </div>
+        </ScrollReveal>
+      )}
+
       {/* Problem Statement & Approach */}
       <ScrollReveal>
         <div className="mb-10">
@@ -380,34 +413,6 @@ function CaseStudySections({
           </div>
         </div>
       </ScrollReveal>
-
-      {/* Results */}
-      {(caseStudy.resultsSummary || caseStudy.resultsTable) && (
-        <ScrollReveal>
-          <div className="mb-10">
-            <h2 className="text-[20px] font-display font-semibold text-text-primary mb-3">
-              Results
-            </h2>
-            {caseStudy.resultsTable && <DataTable table={caseStudy.resultsTable} />}
-            {caseStudy.resultsSummary && (
-              <p
-                className="text-[15px] text-text-primary/85 leading-[1.8] mt-4 p-4 rounded-xl"
-                style={{
-                  background: "color-mix(in srgb, var(--accent-projects) 6%, var(--surface-0))",
-                  borderLeft: "4px solid var(--accent-projects)",
-                }}
-              >
-                {caseStudy.resultsSummary}
-              </p>
-            )}
-            {caseStudy.resultsNote && (
-              <p className="text-[14px] text-text-tertiary leading-relaxed mt-3">
-                {caseStudy.resultsNote}
-              </p>
-            )}
-          </div>
-        </ScrollReveal>
-      )}
 
       {/* Honest Limitations */}
       {caseStudy.limitations && (
