@@ -89,15 +89,16 @@ export const experiences: Experience[] = [
     location: "Newark, Delaware",
     dates: "Jun 2026 — Aug 2026",
     metrics: [
-      { value: "100%", label: "Classification Accuracy" },
-      { value: "5", label: "Risk Event Types" },
-      { value: "9", label: "Field Annotation Schema" },
+      { value: "617K", label: "Rows Processed" },
+      { value: "10K+", label: "Employees Served" },
+      { value: "~1,600", label: "Records Recovered" },
     ],
     bullets: [
-      "Engineered the NLP backbone of an AI investment risk agent (spaCy NER, FinBERT, SentenceTransformer) that automatically converts raw regulatory, sanctions, and geopolitical documents into structured risk signals, achieving 100% event classification accuracy across 5 risk event types and enabling analysts to replace manual document review with model-generated alerts",
-      "Designed a retraining pipeline for a production AI agent with a 9-field annotation schema and automated validation framework, ensuring human-reviewed labels feed cleanly into NLP model updates, directly improving the reliability of risk scores and confidence outputs consumed by portfolio managers on the SAC Nexus platform",
+      "Cut compensation lookup time from 10–20 minutes to seconds, saving hundreds of analyst-hours across the People Analytics org, by building an end-to-end Python/SQL platform with a precomputed pass and two-tier caching layer over 617K rows and 173K external market records spanning 150 job families",
+      "Delivered self-service pay-equity and workforce analytics to 10,000+ employees and leadership by designing executive Tableau dashboards, engineering a MAD/modified-Z outlier and privacy-suppression statistical engine, and integrating the Claude API for entity resolution with human-in-the-loop safeguards",
+      "Recovered ~1,600 previously dropped market records and restored full data coverage by diagnosing and fixing two silent defects in the data pipeline",
     ],
-    tags: ["spaCy", "FinBERT", "SentenceTransformers", "NLP", "Python", "Risk Modeling"],
+    tags: ["Python", "SQL", "Tableau", "Claude API", "Statistical Analysis", "Data Engineering"],
   },
   {
     company: "Ernst & Young (EY)",
