@@ -89,14 +89,15 @@ export const experiences: Experience[] = [
     location: "Newark, Delaware",
     dates: "Jun 2026 — Aug 2026",
     metrics: [
-      { value: "617K", label: "Rows Processed" },
-      { value: "10K+", label: "Employees Served" },
+      { value: "790K", label: "Records Processed" },
       { value: "~1,600", label: "Records Recovered" },
+      { value: "2", label: "Silent Bugs Fixed" },
     ],
     bullets: [
-      "Cut compensation lookup time from 10–20 minutes to seconds, saving hundreds of analyst-hours across the People Analytics org, by building an end-to-end Python/SQL platform with a precomputed pass and two-tier caching layer over 617K rows and 173K external market records spanning 150 job families",
-      "Delivered self-service pay-equity and workforce analytics to 10,000+ employees and leadership by designing executive Tableau dashboards, engineering a MAD/modified-Z outlier and privacy-suppression statistical engine, and integrating the Claude API for entity resolution with human-in-the-loop safeguards",
-      "Recovered ~1,600 previously dropped market records and restored full data coverage by diagnosing and fixing two silent defects in the data pipeline",
+      "Built a Python/SQL platform for self-service compensation lookups, using precomputation and two-tier caching over 790K market records to cut lookup time from 10–20 minutes to seconds",
+      "Surfaced org-wide pay-equity gaps via Tableau dashboards backed by a MAD/modified-Z outlier detection and privacy-suppression engine",
+      "Integrated Claude API-driven entity resolution with human-in-the-loop review, strengthening match reliability across internal and external market-record sources",
+      "Restored data integrity for compensation benchmarking by fixing two silent pipeline defects, recovering ~1,600 dropped market records",
     ],
     tags: ["Python", "SQL", "Tableau", "Claude API", "Statistical Analysis", "Data Engineering"],
   },
@@ -108,16 +109,15 @@ export const experiences: Experience[] = [
     metrics: [
       { value: "10M+", label: "Records Processed" },
       { value: "25%", label: "Faster Decisions" },
-      { value: "22%", label: "Feature Lift" },
+      { value: "22%", label: "Engagement Lift" },
     ],
     bullets: [
-      "Transformed 10M+ healthcare records into actionable insights using SQL, enabling stakeholders to track adoption trends and optimize rollout of Tele-MANAS, a national mental health platform",
-      "Designed and deployed Power BI dashboards for 10+ regional teams to track performance KPIs, reducing strategic decision cycles by 25%",
-      "Spearheaded A/B tests on 100K+ platform users to evaluate an auto call routing feature, assigning control and treatment groups to quantify feature lift and validate a 22% improvement in adoption rate prior to large-scale deployment",
-      "Cleaned and standardized healthcare records using SQL, performing outlier analysis via statistical thresholds and data validation checks, improving analysis accuracy by 40%",
-      "Orchestrated user-centric feature rollouts cross-functionally with medical professionals, engineers, and government officials, leading to a 30 % increase in adoption across the national health platform"
+      "Validated a 22% engagement lift by running A/B tests on 100K+ platform users to evaluate an auto call routing feature, using a two-sample t-test to establish significance before scaling",
+      "Increased adoption by 30% on Tele-MANAS, a national mental health platform, by turning 10M+ records into actionable insights via SQL to surface regional drop-off patterns",
+      "Partnered with medical, engineering, and government stakeholders to translate drop-off insights into cross-functional rollouts across Tele-MANAS",
+      "Reduced strategic decision cycles by 25% for 10+ regional teams by designing and deploying Power BI dashboards to track performance KPIs",
     ],
-    tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data", "Outlier Analysis", "Cross-Functional Collaboration"],
+    tags: ["SQL", "Power BI", "A/B Testing", "Python", "Healthcare Data", "Cross-Functional Collaboration"],
   },
   {
     company: "LG Electronics",
@@ -127,14 +127,12 @@ export const experiences: Experience[] = [
     metrics: [
       { value: "15%", label: "Faster Approvals" },
       { value: "10%", label: "Cost Savings" },
-      { value: "5+", label: "Vendors Analyzed" },
     ],
     bullets: [
-      "Engineered Python + SQL workflows to integrate supplier KPI data, enabling 15% faster contract approvals and reducing manual review effort",
-      "Analyzed supplier pricing and performance across 5+ vendor categories using Excel and SQL, supporting cost optimization decisions",
-      "Identified potential 10% cost savings through vendor performance analysis and Tableau dashboards, enabling data-driven negotiations",
+      "Identified a 10% cost-saving opportunity by applying z-score outlier analysis to flag suppliers with anomalous raw material costs, enabling data-driven negotiations",
+      "Accelerated contract approvals by 15% by designing a scalable Python + SQL pipeline to integrate and process supplier KPI data, reducing manual review effort",
     ],
-    tags: ["Python", "SQL", "Tableau", "Excel", "Supply Chain"],
+    tags: ["Python", "SQL", "Outlier Analysis", "Supply Chain"],
   },
   {
     company: "Manipal Institute of Technology",
@@ -147,8 +145,7 @@ export const experiences: Experience[] = [
       { value: "1", label: "Best Paper Award" },
     ],
     bullets: [
-      "Engineered a 5-layer CNN using PyTorch, optimized with a Sine Cosine Algorithm (SCA), classifying lung CT scans into benign, malignant, and normal categories with 92% accuracy",
-      "Published research at the 5th International Conference on Data Analytics (London, 2024), winning Best Paper Award for the proposed automated lung cancer screening framework",
+      "Engineered a 5-layer CNN (PyTorch, SCA-optimized) classifying lung CT scans at 92% accuracy; published, winning Best Paper Award at ICDATA 2024 (London)",
     ],
     tags: ["PyTorch", "CNN", "Deep Learning", "Medical Imaging", "Sine Cosine Algorithm"],
   },
@@ -514,11 +511,11 @@ export const projects: Project[] = [
     approach:
       "Ran two preprocessing tracks over the combined corpus — TF-IDF with stopword removal for classical models and minimal normalization for transformers — then compared a classical ML baseline (TF-IDF → TruncatedSVD/LSA → clustering and linear/tree classifiers) against a fine-tuned DistilBERT trained end-to-end on the balanced Jigsaw + TweetEval set, evaluating both with precision, recall, F1, and confusion-matrix analysis across corpora.",
     results: [
-      "Trained and evaluated across 1.8M+ records from Google Jigsaw Civil Comments and TweetEval Hate Speech datasets",
+      "Stratified the 1.8M+ combined corpus (Jigsaw + Twitter) down to a balanced 79K-sample to correct for severe class imbalance (91.7% non-toxic)",
       "Found only 2.6% vocabulary overlap between the two corpora, revealing sharp platform-specific toxic language patterns",
       "TruncatedSVD (LSA) to 200 dimensions with KMeans (k=2) recovered toxic/non-toxic structure, but clustered poorly (silhouette ≈ 0.10) on linearly inseparable features",
       "Switched from a staged Jigsaw→Twitter fine-tune (stalled at ~67% accuracy) to end-to-end DistilBERT training on the combined, balanced corpus, which trained stably across both sources",
-      "Evaluated with precision, recall, F1, and confusion matrices instead of raw accuracy, since Jigsaw was 91.7% non-toxic",
+      "Outperformed classical baselines (best: Logistic Regression, 0.915 ROC-AUC) with the fine-tuned DistilBERT, achieving F1 = 0.870 and 91% recall on held-out data",
     ],
     lessons:
       "The biggest lesson was that classical clustering (TF-IDF + LSA + KMeans) couldn't linearly separate toxic from non-toxic text, which justified moving to a fine-tuned DistilBERT model trained end-to-end on the combined corpus. Balancing the dataset and evaluating with precision, recall, and F1 rather than accuracy was essential given Jigsaw's 91.7% non-toxic skew. Future work includes multi-class target identification, a real-time moderation API, and multilingual toxicity detection.",
@@ -563,11 +560,12 @@ export const projects: Project[] = [
           challenge:
             "Only 2.6% vocabulary overlap between the forum-comment and tweet corpora, and a staged Jigsaw→Twitter fine-tune stalled around 67% accuracy.",
           solution:
-            "Switched to direct end-to-end DistilBERT training on the combined, balanced corpus with consistent preprocessing, which trained stably across both sources.",
+            "Switched to direct end-to-end DistilBERT training on the combined, balanced corpus with consistent preprocessing, which trained stably across both sources — ultimately outperforming the best classical baseline (Logistic Regression, 0.915 ROC-AUC) with F1 = 0.870 and 91% recall on held-out data.",
         },
         {
           challenge: "The Jigsaw corpus was 91.7% non-toxic, making raw accuracy a misleading metric.",
-          solution: "Balanced the combined dataset and evaluated with precision, recall, F1, and confusion matrices instead of accuracy.",
+          solution:
+            "Stratified the 1.8M+ combined corpus down to a balanced 79K-sample and evaluated with precision, recall, F1, and confusion matrices instead of accuracy.",
         },
         {
           challenge:
@@ -575,6 +573,8 @@ export const projects: Project[] = [
           solution: "Used that finding to justify moving from classical clustering to fine-tuned DistilBERT for the classification task.",
         },
       ],
+      resultsSummary:
+        "The fine-tuned DistilBERT outperformed every classical baseline — including the strongest, Logistic Regression at 0.915 ROC-AUC — achieving F1 = 0.870 and 91% recall on held-out data, after stratifying the 1.8M+ combined corpus down to a balanced 79K-sample to correct for Jigsaw's 91.7% non-toxic skew.",
       improvements: [
         "Multi-class targeting to identify which group a hate-speech instance is aimed at",
         "A real-time inference API for live moderation",
