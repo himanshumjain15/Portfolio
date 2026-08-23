@@ -29,6 +29,7 @@ function StatCounter({ value, suffix, label, accent }: {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started) {
+          el.classList.add("is-visible");
           setStarted(true);
           observer.unobserve(el);
         }

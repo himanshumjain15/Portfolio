@@ -7,7 +7,7 @@ export const personalInfo = {
   firstName: "Himanshu",
   tagline: "Turning messy data into actionable insights.",
   description:
-    "MS Data Science at CU Boulder. Building insights from millions of records at Ernst & Young and LG Electronics. Award-winning researcher in deep learning for medical imaging.",
+    "MS Data Science at CU Boulder. Data science internships at Summer Atlantic Capital, Ernst & Young, and LG Electronics. I take ML systems end to end — from experiment design to deployed API. Best Paper Award winner for deep learning in medical imaging.",
   email: "himanshumjain15@gmail.com",
   phone: "+1 (303) 641-6694",
   location: "Boulder, CO",
@@ -49,8 +49,8 @@ export const sections: SectionConfig[] = [
 // ═══════════════════════════════════════════════════════
 
 export const aboutParagraphs = [
-  "Master's student in Data Science at the University of Colorado Boulder (Class of 2027), with prior internships at Ernst & Young and LG Electronics. Skilled in SQL, Python, R, and Tableau/Power BI for large-scale data analysis, KPI tracking, and statistical modeling.",
-  "Experienced in translating complex analyses into clear business recommendations through dashboards, reports, and presentations. Adept at designing data pipelines, validating insights, and delivering actionable strategies for cross-functional teams. CPT-eligible for Summer 2026.",
+  "Master's student in Data Science at the University of Colorado Boulder (Class of 2027), with data science internships at Summer Atlantic Capital, Ernst & Young, and LG Electronics. Skilled in Python, SQL, and Tableau/Power BI for large-scale analysis, statistical modeling, and KPI tracking.",
+  "Experienced in translating complex analyses into clear business recommendations through dashboards, reports, and presentations. Equally comfortable designing data pipelines, validating findings with rigorous experiments, and shipping models to production as containerized services on AWS.",
 ];
 
 export const quickInfo = [
@@ -63,9 +63,9 @@ export const quickInfo = [
 
 export const stats = [
   { label: "Records Processed", value: 10, suffix: "M+", accent: "var(--accent-about)" },
-  { label: "Classification Accuracy", value: 92, suffix: "%", accent: "var(--accent-research)" },
-  { label: "Text Records Analyzed", value: 1.77, suffix: "M+", accent: "var(--accent-projects)" },
-  { label: "Industry Internships", value: 2, suffix: "", accent: "var(--accent-experience)" },
+  { label: "A/B Test Lift", value: 44.9, suffix: "%", accent: "var(--accent-projects)" },
+  { label: "Text Records Analyzed", value: 1.8, suffix: "M+", accent: "var(--accent-research)" },
+  { label: "Industry Internships", value: 3, suffix: "", accent: "var(--accent-experience)" },
 ];
 
 // ═══════════════════════════════════════════════════════
@@ -725,7 +725,7 @@ export const skillGroups: SkillGroup[] = [
     accent: "var(--accent-research)",
     skills: [
       { name: "Statistical Inference", proof: "CU Boulder Coursework", level: "proficient" },
-      { name: "A/B Testing", proof: "EY — 100K+ user experiments", level: "expert" },
+      { name: "A/B Testing", proof: "EY — 100K+ users; CineMatch — pre-registered", level: "expert" },
       { name: "Hypothesis Testing", proof: "Wine Quality Analysis", level: "expert" },
       { name: "EDA", proof: "All projects", level: "expert" },
       { name: "Feature Engineering", proof: "Hate Speech Mining", level: "proficient" },
@@ -749,12 +749,12 @@ export const skillGroups: SkillGroup[] = [
     title: "ML & Deep Learning",
     accent: "var(--accent-projects)",
     skills: [
+      { name: "PyTorch", proof: "DistilBERT fine-tuning & CNN", level: "proficient" },
+      { name: "DistilBERT / Transformers", proof: "Toxicity Mining — F1 0.870", level: "proficient" },
+      { name: "NLP & Text Mining", proof: "1.8M+ records analyzed", level: "proficient" },
       { name: "CNN", proof: "Lung Cancer — 92% accuracy", level: "proficient" },
-      { name: "NLP & Text Mining", proof: "1.77M records analyzed", level: "proficient" },
-      { name: "TensorFlow", proof: "Lung Cancer Detection", level: "proficient" },
-      { name: "KMeans Clustering", proof: "Hate Speech Mining", level: "proficient" },
-      { name: "Linear Regression", proof: "Coursework", level: "proficient" },
-      { name: "TF-IDF / SVD", proof: "Hate Speech Mining", level: "proficient" },
+      { name: "Collaborative Filtering", proof: "CineMatch — ALS recommender", level: "proficient" },
+      { name: "TF-IDF / SVD", proof: "Toxicity Mining & CineMatch", level: "proficient" },
     ],
   },
   {
@@ -781,10 +781,12 @@ export const skillGroups: SkillGroup[] = [
     title: "Infrastructure & Tools",
     accent: "var(--accent-contact)",
     skills: [
-      { name: "AWS", proof: "Cloud experience", level: "familiar" },
+      { name: "AWS EC2", proof: "CineMatch — deployed API", level: "proficient" },
+      { name: "Docker", proof: "CineMatch & IntelliTalent", level: "proficient" },
+      { name: "FastAPI", proof: "CineMatch — live service", level: "proficient" },
+      { name: "PostgreSQL", proof: "CineMatch — 5-table schema", level: "proficient" },
       { name: "Git & GitHub", proof: "All projects", level: "expert" },
       { name: "Jira", proof: "EY — project management", level: "proficient" },
-      { name: "Excel", proof: "LG — vendor analysis", level: "expert" },
     ],
   },
 ];
@@ -801,6 +803,6 @@ export const certifications = [
 export const floatingBadges = [
   { label: "Python", proof: "All Projects" },
   { label: "SQL", proof: "10M+ Records" },
-  { label: "TensorFlow", proof: "92% Accuracy" },
-  { label: "NLP", proof: "1.77M Records" },
+  { label: "PyTorch", proof: "92% Accuracy" },
+  { label: "AWS", proof: "Deployed APIs" },
 ];
