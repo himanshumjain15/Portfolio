@@ -304,6 +304,8 @@ export interface Project {
   featured: boolean;
   image?: string;
   category?: string;
+  /** Headline numbers shown as chips on the project card (max 3). */
+  metrics?: { value: string; label: string }[];
   caseStudy?: ProjectCaseStudy;
   workflow?: string[];
 }
@@ -336,6 +338,11 @@ export const projects: Project[] = [
     ],
     featured: false,
     image: "/Portfolio/images/cinematch-cover.png",
+    metrics: [
+      { value: "44.9%", label: "Relative Lift" },
+      { value: "p<0.001", label: "Significance" },
+      { value: "43.65%", label: "Hit-rate@10" },
+    ],
     category: "AI / ML",
     caseStudy: {
       overview:
@@ -486,6 +493,11 @@ export const projects: Project[] = [
     ],
     featured: false,
     image: "/Portfolio/images/intellitalent-cover.png",
+    metrics: [
+      { value: "~50ms", label: "Match Latency" },
+      { value: "100×", label: "Latency Cut" },
+      { value: "60/40", label: "Hybrid Score" },
+    ],
     category: "AI / ML",
     caseStudy: {
       overview:
@@ -565,6 +577,11 @@ export const projects: Project[] = [
     ],
     featured: false,
     image: "/Portfolio/images/hate-speech-mining-cover.png",
+    metrics: [
+      { value: "1.8M+", label: "Records" },
+      { value: "0.870", label: "F1 Score" },
+      { value: "91%", label: "Recall" },
+    ],
     category: "AI / ML",
     caseStudy: {
       overview:
@@ -645,6 +662,11 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/loan-prediction-ml" }],
     featured: false,
     image: "/Portfolio/images/loan-prediction-cover.svg",
+    metrics: [
+      { value: "83.7%", label: "Accuracy" },
+      { value: "0.796", label: "ROC AUC" },
+      { value: "10×", label: "Credit-History Odds" },
+    ],
     workflow: [
       "Exploratory Data Analysis",
       "Log Transform + Outlier Removal",
@@ -684,6 +706,11 @@ export const projects: Project[] = [
     ],
     featured: false,
     image: "/Portfolio/images/lm-assisted-eda-cover.svg",
+    metrics: [
+      { value: "0", label: "Hallucinated Values" },
+      { value: "5+", label: "Auto Visualizations" },
+      { value: "5–10", label: "Insights per Run" },
+    ],
   },
   {
     id: "titanic-logistic-regression",
@@ -709,6 +736,11 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/Titanic-Logistic-Regression-Analysis" }],
     featured: false,
     image: "/Portfolio/images/titanic-cover.svg",
+    metrics: [
+      { value: "~81%", label: "Test Accuracy" },
+      { value: "0.87", label: "ROC-AUC" },
+      { value: "96%", label: "1st-Class Female Survival" },
+    ],
     workflow: [
       "Imports & Data Loading",
       "Dataset Overview",
@@ -744,6 +776,10 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", url: "https://github.com/himanshumjain15/wine-quality-analysis" }],
     featured: false,
     image: "/Portfolio/images/wine-quality-cover.svg",
+    metrics: [
+      { value: "6,400+", label: "Samples Analyzed" },
+      { value: "2", label: "Wine Types Compared" },
+    ],
   },
 ];
 

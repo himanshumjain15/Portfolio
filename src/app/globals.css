@@ -13,7 +13,7 @@
   --surface-1: #F0F2FA;
   --text-primary: #0D1117;
   --text-secondary: #5A6478;
-  --text-tertiary: #9BA3B8;
+  --text-tertiary: #697080; /* 4.64:1 on --background — was #9BA3B8 at 2.36:1 (WCAG AA fail) */
   --border-subtle: #E3E6F0;
   --border-default: #C8CEDF;
 
@@ -47,7 +47,7 @@
   --surface-1: #1C1F3A;
   --text-primary: #E8ECFF;
   --text-secondary: #8893B8;
-  --text-tertiary: #4D5680;
+  --text-tertiary: #7C83A6; /* 4.80:1 on --surface-0 — was #4D5680 at 2.73:1 (WCAG AA fail) */
   --border-subtle: #1E2245;
   --border-default: #2A2F5C;
 

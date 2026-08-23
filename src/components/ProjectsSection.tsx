@@ -166,6 +166,30 @@ export function ProjectsSection() {
                     {project.subtitle}
                   </p>
 
+                  {project.metrics && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.metrics.map((m) => (
+                        <div
+                          key={m.label}
+                          className="flex flex-col px-2.5 py-1.5 rounded-lg"
+                          style={{
+                            background:
+                              "color-mix(in srgb, var(--accent-projects) 8%, transparent)",
+                            border:
+                              "1px solid color-mix(in srgb, var(--accent-projects) 15%, transparent)",
+                          }}
+                        >
+                          <span className="text-[14px] font-display font-bold text-accent-projects leading-none">
+                            {m.value}
+                          </span>
+                          <span className="text-[10px] text-text-tertiary font-medium mt-1 whitespace-nowrap">
+                            {m.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="flex flex-wrap gap-1.5 mt-auto">
                     {project.tags.slice(0, 4).map((tag) => (
                       <span
