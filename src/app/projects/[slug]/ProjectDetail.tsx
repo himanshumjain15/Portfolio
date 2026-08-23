@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { MeshAurora } from "@/components/MeshAurora";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import type { Project, ProjectCaseStudy } from "@/data/portfolio";
+import { ModelComparisonChart, ABTestChart } from "@/components/charts/ProjectCharts";
 
 export function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -265,6 +266,15 @@ function CaseStudySections({
                 {caseStudy.resultsIntro}
               </p>
             )}
+            {caseStudy.resultsChart && (
+              <ABTestChart
+                data={caseStudy.resultsChart.data}
+                domain={caseStudy.resultsChart.domain}
+                title={caseStudy.resultsChart.title}
+                subtitle={caseStudy.resultsChart.subtitle}
+                footnote={caseStudy.resultsChart.footnote}
+              />
+            )}
             {caseStudy.resultsTable && <DataTable table={caseStudy.resultsTable} />}
             {caseStudy.resultsSummary && (
               <p
@@ -299,6 +309,14 @@ function CaseStudySections({
             <span className="font-semibold text-text-primary">Approach: </span>
             {caseStudy.approachSummary}
           </p>
+          {caseStudy.approachChart && (
+            <ModelComparisonChart
+              data={caseStudy.approachChart.data}
+              title={caseStudy.approachChart.title}
+              subtitle={caseStudy.approachChart.subtitle}
+              footnote={caseStudy.approachChart.footnote}
+            />
+          )}
           {caseStudy.approachTable && <DataTable table={caseStudy.approachTable} />}
         </div>
       </ScrollReveal>

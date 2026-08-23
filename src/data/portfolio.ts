@@ -262,6 +262,12 @@ export interface ProjectCaseStudy {
   problemStatement: string;
   approachSummary: string;
   approachTable?: { headers: string[]; rows: string[][] };
+  approachChart?: {
+    title: string;
+    subtitle?: string;
+    footnote?: string;
+    data: { label: string; value: number; note?: string; highlight?: boolean }[];
+  };
   systemArchitecture: string;
   keyFeatures: string[];
   techStack: { category: string; items: string[] }[];
@@ -270,6 +276,13 @@ export interface ProjectCaseStudy {
   resultsIntro?: string;
   resultsSummary?: string;
   resultsTable?: { headers: string[]; rows: string[][] };
+  resultsChart?: {
+    title: string;
+    subtitle?: string;
+    footnote?: string;
+    domain: [number, number];
+    data: { label: string; value: number; lo: number; hi: number; n: number; highlight?: boolean }[];
+  };
   resultsNote?: string;
   limitations?: string[];
   improvements: string[];
@@ -340,6 +353,19 @@ export const projects: Project[] = [
           ["Hybrid (90% CF, 10% content)", "Both signals blended", "43.65%"],
         ],
       },
+      approachChart: {
+        title: "Hit-rate@10 by approach",
+        subtitle:
+          "The hybrid wins, but the real surprise is content-based scoring — six times worse than simply showing everyone the same popular films.",
+        footnote:
+          "Hit-rate@10 = the share of viewers for whom at least one of ten recommendations was a film they later rated highly.",
+        data: [
+          { label: "Hybrid (90% CF, 10% content)", value: 43.65, note: "Both signals blended", highlight: true },
+          { label: "Collaborative filtering", value: 42.13, note: "What similar-behaving people liked" },
+          { label: "Popularity", value: 31.13, note: "Most-rated films, same for everyone" },
+          { label: "Content-based", value: 5.25, note: "Films with matching genres" },
+        ],
+      },
       systemArchitecture:
         "MovieLens data feeds Postgres, which trains three models. FastAPI serves them and logs every recommendation back to Postgres. The Streamlit demo calls that API over HTTP. The data layer uses five Postgres tables (users, items, interactions, recommendation_logs, experiment_assignments) with the schema initialized automatically on first container start. FastAPI loads the trained model and similarity matrix once at startup and answers requests in milliseconds, writing every recommendation served back to Postgres. Users are bucketed deterministically into control and treatment groups, each served by a different model, with results compared via a two-proportion test. The Streamlit front end calls the live API rather than holding its own copy of the model, so what a visitor sees is the deployed system's real output.",
       keyFeatures: [
@@ -400,6 +426,18 @@ export const projects: Project[] = [
         rows: [
           ["Control (popularity)", "29.35%", "293", "24.43% – 34.81%"],
           ["Treatment (hybrid)", "42.54%", "315", "37.20% – 48.06%"],
+        ],
+      },
+      resultsChart: {
+        title: "A/B experiment — hit-rate@10 with 95% confidence intervals",
+        subtitle:
+          "The intervals do not overlap, which is the visual form of the significance test: p = 0.00072.",
+        footnote:
+          "Bars span the 95% confidence interval; the dot is the point estimate. Non-overlapping intervals indicate the difference is unlikely to be noise.",
+        domain: [20, 50],
+        data: [
+          { label: "Control (popularity)", value: 29.35, lo: 24.43, hi: 34.81, n: 293 },
+          { label: "Treatment (hybrid)", value: 42.54, lo: 37.2, hi: 48.06, n: 315, highlight: true },
         ],
       },
       resultsNote:

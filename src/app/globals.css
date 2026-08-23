@@ -28,6 +28,10 @@
   --accent-writing: #D97706;
   --accent-contact: #0891B2;
 
+  /* Chart tokens — validated via dataviz validate_palette.js
+     light: accent #F97316 + muted #5A6478 → CVD ΔE 19.8, normal ΔE 29.6 */
+  --chart-muted: #5A6478;
+
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(13, 17, 40, 0.06);
   --shadow-md: 0 8px 24px rgba(13, 17, 40, 0.10);
@@ -56,6 +60,9 @@
   --accent-skills: #F472B6;
   --accent-writing: #FBBF24;
   --accent-contact: #22D3EE;
+
+  /* dark: accent #FF9A4D + muted #6B77A3 → all checks PASS incl. 3:1 contrast */
+  --chart-muted: #6B77A3;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
