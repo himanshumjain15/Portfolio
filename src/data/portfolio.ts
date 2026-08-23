@@ -241,13 +241,13 @@ export const research: Research[] = [
     problem:
       "Lung cancer remains the leading cause of cancer-related deaths, and early detection from CT scans is critical. Existing deep learning models struggle with class imbalance in medical datasets, often missing minority-class diagnoses that are the most clinically important.",
     approach:
-      "Designed a 5-layer CNN architecture and optimized hyperparameters using the Sine Cosine Algorithm (SCA), a metaheuristic that explores the parameter space more effectively than traditional grid search. Used TensorFlow for implementation, with careful handling of class imbalance through augmentation and weighted loss functions.",
+      "Designed a 5-layer CNN architecture and optimized hyperparameters using the Sine Cosine Algorithm (SCA), a metaheuristic that explores the parameter space more effectively than traditional grid search. Used PyTorch for implementation, with careful handling of class imbalance through augmentation and weighted loss functions.",
     findings: [
       "Achieved 92% classification accuracy on CT lung scan dataset",
       "Outperformed baseline CNN and traditional ML methods on imbalanced data",
       "Won Best Paper Award at the conference, recognizing innovation in deep learning optimization",
     ],
-    tags: ["Deep Learning", "CNN", "TensorFlow", "Medical Imaging", "Optimization"],
+    tags: ["Deep Learning", "CNN", "PyTorch", "Medical Imaging", "Optimization"],
     links: [{ label: "Paper", url: "https://link.springer.com/chapter/10.1007/978-981-96-3352-4_46" }],
     award: "Best Paper Award",
   },
