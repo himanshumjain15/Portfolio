@@ -36,7 +36,7 @@ function ChartFrame({
       </figcaption>
       <div className="mt-5">{children}</div>
       {footnote && (
-        <div className="text-[12px] text-text-tertiary mt-4 leading-relaxed">
+        <div className="text-[12px] text-text-secondary mt-4 leading-relaxed">
           {footnote}
         </div>
       )}
@@ -89,7 +89,7 @@ export function ModelComparisonChart({
                   {d.label}
                 </span>
                 {d.note && (
-                  <span className="text-[12px] text-text-tertiary hidden sm:inline">
+                  <span className="text-[12px] text-text-secondary hidden sm:inline">
                     · {d.note}
                   </span>
                 )}
@@ -181,7 +181,7 @@ export function ABTestChart({
                   <span style={{ fontVariantNumeric: "tabular-nums" }}>
                     {d.value.toFixed(2)}%
                   </span>
-                  <span className="text-text-tertiary font-normal ml-2">
+                  <span className="text-text-secondary font-normal ml-2">
                     n = {d.n}
                   </span>
                 </span>
@@ -221,7 +221,7 @@ export function ABTestChart({
                 />
               </div>
 
-              <div className="text-[12px] text-text-tertiary mt-1.5">
+              <div className="text-[12px] text-text-secondary mt-1.5">
                 95% CI {d.lo.toFixed(2)}% – {d.hi.toFixed(2)}%
               </div>
             </div>
@@ -236,7 +236,7 @@ export function ABTestChart({
           {ticks.map((t) => (
             <span
               key={t}
-              className="absolute text-[11px] text-text-tertiary -translate-x-1/2"
+              className="absolute text-[11px] text-text-secondary -translate-x-1/2"
               style={{ left: `${pos(t)}%`, fontVariantNumeric: "tabular-nums" }}
             >
               {Math.round(t)}%
