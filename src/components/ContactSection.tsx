@@ -28,6 +28,7 @@ export function ContactSection() {
 
   const socialLinks = [
     { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+    { icon: Mail, label: "Alternate Email", value: personalInfo.emailAlt, href: `mailto:${personalInfo.emailAlt}` },
     { icon: Github, label: "GitHub", value: "himanshumjain15", href: personalInfo.github },
     { icon: Linkedin, label: "LinkedIn", value: "himanshumjain15", href: personalInfo.linkedin },
     { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone}` },

@@ -9,6 +9,7 @@ export const personalInfo = {
   description:
     "MS Data Science at CU Boulder. Data science internships at Summer Atlantic Capital, Ernst & Young, and LG Electronics. I take ML systems end to end — from experiment design to deployed API. Best Paper Award winner for deep learning in medical imaging.",
   email: "himanshumjain15@gmail.com",
+  emailAlt: "himanshumjain11@gmail.com",
   phone: "+1 (303) 641-6694",
   location: "Boulder, CO",
   openToRelocate: true,
